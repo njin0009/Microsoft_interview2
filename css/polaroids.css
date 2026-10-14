@@ -1,0 +1,55 @@
+/* habits as a polaroid line (js/polaroids.js). Without the script the section keeps its grid of .trait tiles. */
+.pl-section{overflow-x:clip}
+.pl-root{position:relative;margin-inline:calc(50% - 50vw);overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:pan-y;outline:none;cursor:grab;
+  --pl-string:color-mix(in srgb,var(--fg) 42%,transparent)}
+.pl-root[data-drag='1']{cursor:grabbing}
+.pl-root:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+.pl-string{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.pl-string path{stroke:var(--pl-string)}
+
+/* a print: peg, white frame, square shot, handwritten note. The paper stays white in both themes. */
+.pl-card{position:absolute;left:0;top:0;width:var(--pl-cw,300px);transform-origin:50% 0;will-change:transform;visibility:hidden}
+.pl-print{margin-top:10px;background:#fbfaf7;padding:10px 10px 0;
+  box-shadow:0 1px 2px rgba(0,0,0,.12),0 18px 30px -16px rgba(0,0,0,.4);transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+.pl-card[data-on='0'] .pl-print{transform:scale(.9);filter:saturate(.7) brightness(.96)}
+.pl-shot{position:relative;aspect-ratio:1;overflow:hidden;background:#d9d5cc}
+.pl-shot img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;pointer-events:none;opacity:0;transition:opacity .8s}
+.pl-shot img[src]{opacity:1}
+.pl-stamp{position:absolute;left:10px;top:9px;font:500 11px/1 var(--font-mono);letter-spacing:.14em;color:rgba(255,255,255,.9);text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pl-badge{position:absolute;right:10px;bottom:10px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.45);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pl-badge svg{width:20px;height:20px}
+/* a real photo (the habit illustrations, on white): a dark stamp and no icon badge */
+.pl-shot.pl-photo{background:#fff}
+.pl-photo .pl-stamp{color:rgba(20,24,40,.55);text-shadow:none}
+.pl-photo .pl-badge{display:none}
+.pl-note{height:46px;display:flex;align-items:center;justify-content:center;padding:0 6px;font:italic 400 16px/1.1 ui-serif,Georgia,'Times New Roman',serif;color:#3b3833;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-peg{position:absolute;left:50%;top:0;width:10px;height:26px;margin-left:-5px;border-radius:2px;background:linear-gradient(90deg,#c9a67a,#e3c9a1 45%,#b8915f);box-shadow:0 2px 3px rgba(0,0,0,.25)}
+.pl-peg::after{content:'';position:absolute;left:4px;top:8px;width:2px;height:7px;background:rgba(80,60,30,.45);border-radius:1px}
+/* arriving from a cover petal: the print rings blue */
+.pl-card.pl-flash .pl-print{animation:pl-flash 1.8s ease both}
+@keyframes pl-flash{20%,60%{box-shadow:0 0 0 2px var(--accent),0 0 0 8px var(--accent-soft),0 18px 30px -16px rgba(0,0,0,.4)}}
+
+/* caption bar: the active habit's article (role, proof, link), its number and the arrows */
+.pl-bar{display:flex;align-items:flex-start;gap:clamp(12px,2vw,24px);max-width:880px;margin:4px auto 0}
+.pl-cap{flex:1;min-width:0}
+.pl-section .trait{padding:0;display:grid;gap:6px;background:none;border:0;box-shadow:none;transform:none;grid-template-rows:none}
+.pl-section .trait:hover{box-shadow:none;transform:none}
+.pl-section .trait.pl-in{animation:pl-in .55s cubic-bezier(.2,.8,.2,1) both}
+.pl-section .trait .icon{display:none}
+.pl-section .trait h3{font:500 clamp(1.3rem,1rem + 1vw,1.75rem)/1.15 ui-serif,Georgia,'Times New Roman',serif;letter-spacing:0}
+.pl-section .trait .link{border-top:0;padding-top:2px}
+.pl-count{flex:none;padding-top:12px;font:500 12px/1 var(--font-mono);letter-spacing:.14em;color:var(--muted)}
+.pl-count b{color:var(--fg);font-weight:500}
+.pl-btn{appearance:none;flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--fg);display:grid;place-items:center;cursor:pointer;
+  transition:background .2s ease,color .2s ease}
+.pl-btn:hover{background:var(--fg);color:var(--bg)}
+.pl-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@keyframes pl-in{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+@media (max-width:680px){
+  .pl-bar{flex-wrap:wrap}
+  .pl-cap{flex-basis:100%}
+  .pl-count{margin-right:auto}
+}
+@media (prefers-reduced-motion:reduce){.pl-section .trait.pl-in,.pl-card.pl-flash .pl-print{animation:none}.pl-print{transition:none}}

@@ -2,6 +2,8 @@
    that draws as you go, and each one's connector, dot and text rise in as the line reaches it. Without .j-live
    (no JS or reduced motion) it is a plain sideways-scrolling strip with everything shown. */
 .journey{position:relative;background:radial-gradient(ellipse 60% 70% at 78% 45%,rgba(42,134,255,.32),transparent 65%),radial-gradient(ellipse 50% 60% at 10% 100%,rgba(10,95,214,.35),transparent 60%),linear-gradient(160deg,#071d4a,#03091a 70%);--jh:clamp(460px,66vh,600px);--j0:340px;--js:250px;--jw:300px}
+/* a short navy fade over the top edge, so the toolkit band above melts in and the turning bloom has no hard cut; it scrolls away once the band pins */
+.journey::before{content:"";position:absolute;left:0;right:0;top:0;height:120px;z-index:1;pointer-events:none;background:linear-gradient(180deg,#071d4a,rgba(7,29,74,0))}
 .j-pin{position:relative;overflow:hidden;padding-block:64px;color:var(--fg);
   --fg:#f2f4f8;--muted:rgba(242,244,248,.72);--accent:#4cc2ff;--line:rgba(255,255,255,.18);--surface-solid:#0a2257;--accent-soft:rgba(76,194,255,.18)}
 .j-bloom{position:absolute;z-index:0;right:-10vw;top:50%;width:min(115vh,1000px);aspect-ratio:1;pointer-events:none;opacity:.34;

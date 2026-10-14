@@ -2,8 +2,8 @@
    Without .cover-live (no JS or reduced motion) it is a single static screen with the title and the final line. */
 .cover{position:relative;background:#03091a;color:#f2f4f8}
 .c-pin{position:relative;height:calc(100vh - var(--navh,56px));min-height:340px;overflow:hidden}
-.cover-live{height:calc(100vh - var(--navh,56px) + 440vh);margin-bottom:calc(-1 * max(100vh - var(--navh,56px), 340px))}
-.cover-live .c-pin{position:sticky;top:var(--navh,56px);pointer-events:auto}
+.cover-live{height:calc(100vh - var(--navh,56px) + 500vh);margin-bottom:calc(-1 * max(100vh - var(--navh,56px), 340px))}
+.cover-live .c-pin{position:sticky;top:var(--navh,56px);z-index:3;pointer-events:auto}
 /* the hero sits under the cover's last screen; the section itself must not hide it or catch its clicks */
 .cover-live{background:none;pointer-events:none}
 .c-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(42,134,255,calc(.22 + var(--cp,0) * .5)),transparent 70%),linear-gradient(180deg,#061a42,#03091a)}

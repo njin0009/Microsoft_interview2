@@ -5,39 +5,65 @@
   // one (or its keyboard button) pops its balloon and opens a question card. Runs only while the stage is on screen.
   var stage=document.getElementById('crowd');if(!stage)return;
   var cv=stage.querySelector('.crowd-canvas'),ctx=cv.getContext('2d'),card=document.getElementById('ask-card'),list=stage.querySelector('.ask-list');
-  // bx/by: where the balloon sits inside each sprite (fractions), for the pop and the card anchor
-  // each balloon person: their question, who they are, and the project that answers it.
+  // each balloon person, in sprite order (balloon-1.png … balloon-8.png):
+  // c = balloon colour, shape = balloon shape (circle / square / star), look = the character in the sprite,
+  // name = who they are, who = their situation, q = the question in their balloon (the only thing the pop-up card shows),
+  // proj + how = the project that answers it and the steps, shown in the persona panel.
   // bx/by: where the balloon sits inside the sprite (fractions), for the pop and the card anchor.
   // link: ext = external URL, rel = open that release story in the journey dialog
   var ASKS=[
-    {c:'#ef2b2b',bx:.73,by:.12,q:'How can I find the right role for me in Australia?',
-     who:'Me. I want a role in Australia that fits my skills, interests and background.',
-     proj:'CareerOS',how:'Starts from my own profile: it organises experience, skills, interests and career goals, then helps judge how well a role fits and where to focus job-search preparation.'},
-    {c:'#f2b100',bx:.78,by:.11,q:'Can we automatically extract website content and map elements to make migration easier?',
-     who:'A full-stack developer who has to pull content out of an old website and match it to the new system\'s page components.',
-     proj:'Discovery Agent · website migration tool',how:'Fetches page content automatically, identifies page elements and helps map them to target components, cutting the manual checking and tidying.',
+    {c:'#ef2b2b',shape:'circle',look:'Red round balloon · young woman',bx:.73,by:.12,
+     name:'Me, looking for my role in Australia',
+     who:'I want a job in Australia that fits my skills, interests and background.',
+     q:'How can I find the right role for me in Australia?',
+     proj:'CareerOS',
+     how:['Start from my own profile: experience, skills, interests and career goals.','Judge how well each role fits.','Point job-search preparation where it matters most.']},
+    {c:'#f2b100',shape:'square',look:'Yellow square balloon · woman with curly hair',bx:.78,by:.11,
+     name:'Full-stack developer',
+     who:'Has to pull content out of an old website and match it to the new system’s page components.',
+     q:'Can we automatically extract website content and map elements to make migration easier?',
+     proj:'Discovery Agent · website migration tool',
+     how:['Fetch page content automatically.','Identify the page elements.','Help map them to the target components, cutting the manual checking and tidying.'],
      link:{ext:'https://agents-for-migration-of-symphony3.nuojin01.workers.dev/',label:'See the migration prototype'}},
-    {c:'#1f6fff',bx:.65,by:.12,q:'How do we know this feature is ready to release?',
-     who:'An automotive product owner who has to decide whether a software feature meets the bar for release.',
-     proj:'Volvo infotainment testing + Python automation',how:'Functional testing, automated regression and defect analysis give the release decision real quality evidence to stand on.',
+    {c:'#1f6fff',shape:'star',look:'Blue star balloon · older man',bx:.65,by:.12,
+     name:'Automotive product owner',
+     who:'Has to decide whether a software feature meets the bar for release.',
+     q:'How do we know this feature is ready to release?',
+     proj:'Volvo infotainment testing + Python automation',
+     how:['Functional testing of the feature.','Automated regression with Python.','Defect analysis that gives the release decision real quality evidence.'],
      link:{rel:1,label:'See the testing story'}},
-    {c:'#10a8a6',bx:.73,by:.1,q:'How can we keep our international teams aligned and spot blockers early?',
-     who:'A lead or engineer on an international project: teams work differently, progress is scattered and blockers surface late.',
-     proj:'Polestar P417 · China–Sweden collaboration, product management, PMP',how:'Learn how each team works, write management documents everyone can follow, and use Jira to make ownership, dependencies and acceptance criteria explicit and progress visible. Reach out to stakeholders and keep a regular reporting rhythm. Next: auto-synced progress and a daily-summary skill that surfaces the core issues.',
+    {c:'#10a8a6',shape:'circle',look:'Teal round balloon · young man',bx:.73,by:.1,
+     name:'International project lead or engineer',
+     who:'Teams work differently, progress is scattered and blockers surface too late.',
+     q:'How can we keep our international teams aligned and spot blockers early?',
+     proj:'Polestar P417 China–Sweden collaboration · product management · PMP',
+     how:['Learn how each team works and write management documents everyone can follow.','Use Jira to make ownership, dependencies and acceptance criteria explicit, and progress visible.','Reach out to stakeholders and keep a regular reporting rhythm.','Next: auto-synced progress and a daily-summary skill that surfaces the core issues.'],
      link:{rel:2,label:'See the P417 story'}},
-    {c:'#ff6a4d',bx:.67,by:.12,q:'Why does this form ask me questions that don\'t apply to me?',
-     who:'A council website user who wants to finish an application without irrelevant questions or validation getting in the way.',
-     proj:'Golden Plains multi-step webform',how:'Better conditional logic, field validation and confirmation page, so people only answer what applies to them and can submit without roadblocks.'},
-    {c:'#8a3fdc',bx:.69,by:.11,q:'How can I turn my skills into a clear career path?',
-     who:'A career changer with some skills, unsure which role to aim for or what to learn first.',
-     proj:'PathwayIQ + Monash Master of IT',how:'Maps existing skills, the target direction and the gaps between them into a clear learning path they can act on.',
+    {c:'#ff6a4d',shape:'square',look:'Coral square balloon · older woman',bx:.67,by:.12,
+     name:'Council website user',
+     who:'Wants to finish an application without irrelevant questions or validation getting in the way.',
+     q:'Why does this form ask me questions that don’t apply to me?',
+     proj:'Golden Plains multi-step webform',
+     how:['Conditional logic, so people only answer what applies to them.','Clearer field validation.','A confirmation page, so they can submit without roadblocks.']},
+    {c:'#8a3fdc',shape:'star',look:'Purple star balloon · woman in a headscarf',bx:.69,by:.11,
+     name:'Career changer',
+     who:'Has some skills, but isn’t sure which role to aim for or what to learn first.',
+     q:'How can I turn my skills into a clear career path?',
+     proj:'PathwayIQ + Monash Master of IT',
+     how:['Map the skills they already have.','Set the target direction and show the gaps.','Turn that into a clear learning path they can act on.'],
      link:{ext:'https://iteration3.pathwayiq.me/',label:'Try PathwayIQ'}},
-    {c:'#22a63a',bx:.72,by:.11,q:'Can you explain it without all the technical words?',
-     who:'A curious beginner who needs complex ideas in familiar language.',
-     proj:'Explaining tech to non-technical stakeholders',how:'Like when I explained an MCU: start with an intuitive analogy, adjust to their follow-up questions, and check they have really understood.'},
-    {c:'#ff6fae',bx:.78,by:.13,cat:true,q:'Has someone fed me, or am I getting dinner twice?',
-     who:'A cat the whole family looks after, so everyone has to coordinate feeding, cleaning and daily care.',
-     proj:'Family cat-care website · in development',how:'Shared care records and task status, so everyone can see who has already done what: no double dinners, no missed meals.'}
+    {c:'#22a63a',shape:'circle',look:'Green round balloon · little boy',bx:.72,by:.11,
+     name:'Curious beginner',
+     who:'Needs complex tech explained in familiar language.',
+     q:'Can you explain it without all the technical words?',
+     proj:'Explaining tech to non-technical stakeholders',
+     how:['Start with an intuitive analogy, like when I explained an MCU.','Adjust to their follow-up questions.','Check they have really understood.']},
+    {c:'#ff6fae',shape:'square',look:'Pink square balloon · kitten',bx:.78,by:.13,cat:true,
+     name:'The family cat',
+     who:'The whole family looks after it, so feeding, cleaning and daily care have to be coordinated.',
+     q:'Has someone fed me, or am I getting dinner twice?',
+     proj:'Family cat-care website · in development',
+     how:['Shared care records for the whole family.','Task status that shows who has already done what.','No double dinners, no missed meals.']}
   ];
   var SKIP={17:1,72:1,92:1,100:1}; // sheet cells holding a knife
   var sheet=new Image(),sprites=[],loaded=0,ready=false,need=1+ASKS.length,W=0,H=0,ph=0,dpr=1,peeps=[],asks=[],fx=[],run=false,last=0,open=-1,inview=false;
@@ -50,7 +76,7 @@
     ph=H*.56;
   }
   function resetPeep(pp,first){
-    var dir=Math.random()>.5?1:-1,pw=ph*240/324;
+    var dir=1,pw=ph*240/324; // everyone walks left to right, across the full width of the screen
     pp.dir=dir;pp.w=pw;pp.h=ph;pp.off=ph*(.06-.36*Math.pow(Math.random(),2));
     pp.v=(W+pw*2)/rnd(9,18)*dir;
     pp.x=first?rnd(-pw,W):(dir>0?-pw:W);
@@ -118,7 +144,6 @@
     card.style.setProperty('--ac',b.a.c);
     card.querySelector('.ask-num').textContent='Question '+(i+1)+' of '+ASKS.length;
     card.querySelector('#ask-q').textContent=b.a.q;
-    var link=card.querySelector('.ask-go');link.href='#persona';link.textContent='See who\'s asking and my answer';
     showPersona(i);
     card.hidden=false;
     // sit beside the balloon, flipping sides near the edge, clamped inside the stage
@@ -135,27 +160,36 @@
   function closeAsk(){if(open>=0&&asks[open])asks[open].paused=false;open=-1;card.hidden=true;if(!motion){run=false;go();}}
   card.querySelector('.ask-x').addEventListener('click',closeAsk);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!card.hidden)closeAsk();});
-  card.querySelector('.ask-go').addEventListener('click',function(e){
-    e.preventDefault();closeAsk();pv.scrollIntoView({behavior:motion?'smooth':'auto',block:'center'});
-  });
   // persona view inside the toolkit panel: picture, who is asking, the question and how I would solve it
-  var screen=document.querySelector('.hero .screen'),pv=document.getElementById('persona'),pcur=-1;
+  // browsing from one person to the next dissolves the picture through noise (js/morph.js) when WebGL can use it
+  var screen=document.querySelector('.hero .screen'),pv=document.getElementById('persona'),pcur=-1,
+      pic=pv.querySelector('.pv-pic'),pbody=pv.querySelector('.pv-body'),morph=motion&&S.morph?S.morph(pv.querySelector('.pv-morph')):null;
+  function replay(el,cls){el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);}
   function showPersona(i){
-    i=(i+ASKS.length)%ASKS.length;pcur=i;var a=ASKS[i];
+    i=(i+ASKS.length)%ASKS.length;var prev=pcur,a=ASKS[i];pcur=i;
+    var browsing=!pv.hidden&&prev>=0&&prev!==i,n=ASKS.length;
     pv.style.setProperty('--ac',a.c);
+    var morphed=browsing&&!!morph&&morph.play({img:sprites[prev],fit:ASKS[prev].cat?.78:1},{img:sprites[i],fit:a.cat?.78:1},
+      ((i-prev+n)%n)*2<=n?1:-1,function(){pic.classList.remove('morphing');});
+    pic.classList.toggle('morphing',morphed);
     var img=pv.querySelector('.pv-img');img.src='images/crowd/balloon-'+(i+1)+'.png';img.alt='';img.classList.toggle('cat',!!a.cat);
     pv.querySelector('.pv-num').textContent='Question '+(i+1)+' of '+ASKS.length;
-    pv.querySelector('.pv-q').textContent='“'+a.q+'”';
+    pv.querySelector('.pv-dot').className='pv-dot '+a.shape;
+    pv.querySelector('.pv-look').textContent=a.look;
+    pv.querySelector('.pv-name').textContent=a.name;
     pv.querySelector('.pv-who').textContent=a.who;
+    pv.querySelector('.pv-q').textContent=a.q;
     pv.querySelector('.pv-proj').textContent=a.proj;
-    pv.querySelector('.pv-how').textContent=a.how;
+    var ul=pv.querySelector('.pv-how');ul.textContent='';
+    a.how.forEach(function(t){var li=document.createElement('li');li.textContent=t;ul.appendChild(li);});
     var lk=pv.querySelector('.pv-link');
     if(a.link){lk.hidden=false;lk.textContent=a.link.label;lk.href=a.link.ext||'#path';lk.className='link pv-link'+(a.link.ext?' ext':'');
       if(a.link.ext){lk.target='_blank';lk.rel='noopener';}else{lk.removeAttribute('target');lk.removeAttribute('rel');}
       lk.dataset.rel=a.link.rel==null?'':a.link.rel;}
     else lk.hidden=true;
     screen.classList.add('persona-on');pv.hidden=false;
-    pv.classList.remove('show');void pv.offsetWidth;pv.classList.add('show');
+    if(browsing){pv.classList.remove('show');replay(pbody,'swap');if(!morphed)replay(pic,'swap');}
+    else{pbody.classList.remove('swap');pic.classList.remove('swap');replay(pv,'show');}
   }
   pv.querySelector('.pv-link').addEventListener('click',function(e){
     var r=this.dataset.rel;if(r===''||r==null)return;

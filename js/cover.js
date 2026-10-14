@@ -83,7 +83,7 @@
     cFocus(cfinal,Math.min(clamp((p-.8)/.035),1-clamp((p-.885)/.025)),p<.885?20:-20);
     // Microsoft logo: squares spin out one after another, then the wordmark slides out from behind them
     csq.forEach(function(q,i){q.style.setProperty('--s',ease(clamp((p-.895-i*.008)/.03)).toFixed(3));});
-    var w=ease(clamp((p-.925)/.03)),f=easeInOut(clamp((p-.975)/.025));
+    var w=ease(clamp((p-.925)/.03)),f=easeInOut(clamp((p-.96)/.04)); // flight + fade get the last 4% (≈37vh)
     clogo.style.setProperty('--wo',w.toFixed(3));
     clogo.style.setProperty('--wb',((1-w)*8).toFixed(1)+'px');
     clogo.style.setProperty('--wt',((1-w)*-24).toFixed(1)+'px');
@@ -114,9 +114,17 @@
     chint.style.opacity=p>.01?0:1;
     if(cdur>0)cSeek(p*cdur);
   }
-  function cTarget(){var navh=cnav.offsetHeight,total=cover.offsetHeight-(innerHeight-navh);ctarget=total>0?clamp((navh-cover.getBoundingClientRect().top)/total):0;}
+  // the cover scrolls 500vh: the first 440vh play 0–88% exactly as before (title, habits, final line), and the
+  // ending (bloom folds, Microsoft logo, flight to the header) gets the last 112vh instead of 53vh
+  var CSPLIT=.88*440/500;
+  function cTarget(){
+    var navh=cnav.offsetHeight,total=cover.offsetHeight-(innerHeight-navh),raw=total>0?clamp((navh-cover.getBoundingClientRect().top)/total):0;
+    ctarget=raw<CSPLIT?raw/CSPLIT*.88:.88+(raw-CSPLIT)/(1-CSPLIT)*.12;
+  }
   function cFrame(){
-    ccur+=(ctarget-ccur)*.18;
+    // the ending follows the scroll more slowly, and the flight + reveal slower still, so it plays out unhurried
+    var m=Math.max(ccur,ctarget);
+    ccur+=(ctarget-ccur)*(m>.955?.07:m>.88?.11:.18);
     if(Math.abs(ctarget-ccur)<.0005)ccur=ctarget;
     cRender();
     if(ccur!==ctarget)requestAnimationFrame(cFrame);else crun=false;
@@ -131,6 +139,38 @@
     addEventListener('scroll',function(){cTarget();if(!crun){crun=true;requestAnimationFrame(cFrame);}},{passive:true});
     addEventListener('resize',function(){cNav();cLayout();cTarget();ccur=ctarget;cRender();});
     cLayout();cTarget();ccur=ctarget;cRender();
+
+    // hold at the end: when wheel, touch or keyboard scrolling reaches the end of the cover before the hand-off has
+    // played out (the logo still flying, the cover still fading), the page waits there instead of carrying the hero
+    // away under a half-faded cover. Links and "Skip intro" scroll through as usual; scrolling back up is never held.
+    var cHeld=function(){return ccur<.999;},cTouchEnd=0,cWheel=0,cty=null;
+    function cEndY(){var navh=cnav.offsetHeight;return cover.getBoundingClientRect().top+scrollY-navh+cover.offsetHeight-(innerHeight-navh);}
+    addEventListener('wheel',function(e){
+      if(e.deltaY<=0||e.ctrlKey||!cHeld())return;
+      cWheel=performance.now();
+      var y=cEndY(),dy=e.deltaY*(e.deltaMode===1?40:e.deltaMode===2?innerHeight:1);
+      if(scrollY>y+1||scrollY+dy<=y)return; // already past it, or this step stays inside the cover
+      e.preventDefault();
+      if(scrollY<y)scrollTo({top:y,behavior:'instant'});
+    },{passive:false});
+    addEventListener('touchstart',function(e){cty=e.touches[0].clientY;},{passive:true});
+    addEventListener('touchmove',function(e){
+      if(cty===null)return;
+      var dy=cty-e.touches[0].clientY,y=cEndY();cty=e.touches[0].clientY;
+      if(dy>0&&cHeld()&&scrollY>=y-2&&scrollY<=y+1)e.preventDefault();
+    },{passive:false});
+    addEventListener('touchend',function(){cTouchEnd=performance.now();cty=null;},{passive:true});
+    // smooth wheel scrolling and a fling's momentum can still carry the page past the end: right after wheel or touch
+    // input, pull it back while the hand-off is playing (only within half a screen, so a link jump is never pulled back)
+    addEventListener('scroll',function(){
+      var now=performance.now();
+      if(!cHeld()||(now-cWheel>700&&now-cTouchEnd>1500))return;
+      var y=cEndY();if(scrollY>y+1&&scrollY<y+innerHeight*.5)scrollTo({top:y,behavior:'instant'});
+    },{passive:true});
+    addEventListener('keydown',function(e){
+      if(!cHeld()||!/^( |PageDown|ArrowDown|End)$/.test(e.key)||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName))return;
+      var y=cEndY();if(scrollY>=y-2&&scrollY<=y+1)e.preventDefault();
+    });
   }
   cover.querySelector('.c-skip').addEventListener('click',function(){document.getElementById('top').scrollIntoView({behavior:motion?'smooth':'auto'});});
 })(window.Site);

@@ -2,10 +2,9 @@
   .nav-links{order:3;width:100%;margin:0 -12px}
   .nav .wrap{flex-wrap:wrap;gap:4px 18px;padding-top:8px}
   .star,.road{grid-template-columns:1fr 1fr}
-  .kit{grid-template-columns:1fr;margin-top:110px}
+  .kit{grid-template-columns:1fr}
   .persona{grid-template-columns:1fr;margin-top:110px}
   .pv-art{height:300px}
-  .hero-stats{grid-template-columns:1fr 1fr}
   .traits,.after,.data-grid{grid-template-columns:1fr 1fr}
   .data-grid{grid-template-columns:1fr}
   .kpis{grid-template-columns:1fr 1fr}
@@ -17,15 +16,13 @@
   section.block,.cta{padding-block:60px}
   .banner{padding-block:64px}
   .story-body{padding-block:48px 60px}
-  .hero{padding-block:40px 48px}
-  .screen{min-height:0;padding:16px;padding-top:min(56vw,230px);border-radius:var(--r-lg)}
+  .hero{padding-block:40px 0}
+  .screen{--feather:100px;--sink:110px;padding-block:32px calc(var(--sink) + 12px)}
+  .crowd + .screen{padding-top:calc(12px + var(--feather) * .8)}
   .bloom{top:min(28vw,115px);width:min(52vw,210px)}
-  .hero-stats{grid-template-columns:1fr 1fr}
   .kit{margin-top:0}
   .persona{margin-top:0;padding:18px}
-  .screen.persona-on{padding-top:16px}
   .pv-art{height:260px}
-  .hero-stats div{padding:14px 16px}
   .star,.road,.traits,.after{grid-template-columns:1fr}
   .journey{--jh:clamp(440px,68vh,560px);--j0:250px;--js:200px;--jw:228px}
   .j-track{gap:32px}

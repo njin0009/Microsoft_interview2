@@ -12,8 +12,10 @@
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/cover.css">
 <link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/folders.css">
 <link rel="stylesheet" href="css/journey.css">
 <link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/polaroids.css">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/motion.css">
 </head>
@@ -84,9 +86,9 @@
 <!-- 1. Hero -->
 <header class="hero" id="top">
   <div class="wrap">
-    <p class="eyebrow">Nora Jin</p>
-    <h1>Solution <em>Engineer</em></h1>
-    <p class="motto"><small>My motto</small>“Learn it all, not know it all.”</p>
+    <p class="eyebrow" data-te="fade">Nora Jin</p>
+    <h1 data-te="blur" data-te-per="char" data-te-delay=".15">Solution <em>Engineer</em></h1>
+    <p class="motto" data-te="cut" data-te-delay=".7" data-te-stagger=".12"><small>My motto</small>“Learn it all, not know it all.”</p>
     <!-- Crowd: Open Peeps (CC0) walking along the top of the panel; eight balloon people among them each carry a question. -->
     <div class="crowd" id="crowd">
       <p class="crowd-hint"><span class="hb" aria-hidden="true"></span>Every balloon is a question. Click one to ask me.</p>
@@ -97,7 +99,6 @@
         <span class="ask-badge" aria-hidden="true">?</span>
         <p class="ask-num"></p>
         <h3 id="ask-q"></h3>
-        <a class="link ask-go" href="#questions"></a>
       </div>
     </div>
     <div class="screen">
@@ -107,17 +108,24 @@
         <div class="bloom-core"></div>
       </div>
       <section class="persona" id="persona" aria-live="polite" aria-label="Who's asking" hidden>
-        <div class="pv-art"><img class="pv-img" src="images/crowd/balloon-1.png" alt=""></div>
+        <figure class="pv-art">
+          <div class="pv-pic"><img class="pv-img" src="images/crowd/balloon-1.png" alt=""><canvas class="pv-morph" aria-hidden="true"></canvas></div>
+          <figcaption class="pv-tag"><i class="pv-dot" aria-hidden="true"></i><span class="pv-look"></span></figcaption>
+        </figure>
         <div class="pv-body">
           <p class="pv-num"></p>
-          <p class="pv-label">Their question</p>
-          <h3 class="pv-q"></h3>
-          <p class="pv-label">Who's asking</p>
+          <h3 class="pv-name"></h3>
           <p class="pv-who"></p>
-          <p class="pv-label">How I'd solve it</p>
-          <p class="pv-proj"></p>
-          <p class="pv-how"></p>
-          <a class="link pv-link" href="#path" hidden></a>
+          <div class="pv-ask">
+            <p class="pv-label">Their question</p>
+            <p class="pv-q"></p>
+          </div>
+          <div class="pv-solve">
+            <p class="pv-label">How I'd solve it</p>
+            <p class="pv-proj"></p>
+            <ul class="pv-how"></ul>
+            <a class="link pv-link" href="#path" hidden></a>
+          </div>
           <div class="pv-bar">
             <button class="pv-back" type="button">← Back to my toolkit</button>
             <span class="pv-nav"><button class="pv-prev" type="button" aria-label="Previous person"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12.5 5l-5 5 5 5"/></svg></button><button class="pv-next" type="button" aria-label="Next person"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7.5 5l5 5-5 5"/></svg></button></span>
@@ -125,15 +133,36 @@
         </div>
       </section>
       <div class="kit">
-        <div class="kit-col"><h3>Platforms I build on</h3><div class="chips"><span>AWS Lambda</span><span>API Gateway</span><span>S3 + Athena</span><span>DynamoDB</span><span>Cognito</span><span>Amplify</span><span>Cloudflare</span><span>Kubernetes</span><span>Llama 3.3 on Groq</span></div></div>
-        <div class="kit-col"><h3>Skills</h3><div class="chips"><span>Customer discovery</span><span>Solution design</span><span>Data integration</span><span>AI assistants and agents</span><span>Python test automation</span><span>Next.js + TypeScript</span><span>Executive reporting</span><span>Go/No-Go releases</span></div><p>English · Mandarin · Japanese</p></div>
-        <div class="kit-col learn"><h3>Learning it all</h3><div class="chips"><span>Azure Functions</span><span>Azure OpenAI</span><span>Microsoft Fabric</span><span>Power BI</span></div><p>Next: Azure Fundamentals, then Power BI Data Analyst.</p></div>
-      </div>
-      <div class="hero-stats">
-        <div><b class="big">~60</b><span>users tested PathwayIQ</span></div>
-        <div><b class="big">238</b><span>careers mapped from government data</span></div>
-        <div><b class="big">~30%</b><span>faster defect resolution for Polestar</span></div>
-        <div><b class="big">70</b><span>of the team's 89 commits</span></div>
+        <!-- each column becomes a glass folder (js/folders.js); sheets are its files, the first sheet peeks out highest -->
+        <section class="kit-col gf" data-art="platforms" data-seed="3" aria-labelledby="kit-platforms">
+          <h3 class="gf-title" id="kit-platforms">Platforms I build on</h3>
+          <p class="gf-meta">9 tools · 4 groups</p>
+          <div class="gf-files" role="list">
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">AWS serverless</span><span class="gf-sheet-meta">4</span></span><div class="chips"><span>AWS Lambda</span><span>API Gateway</span><span>Cognito</span><span>Amplify</span></div></div>
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">AWS data</span><span class="gf-sheet-meta">2</span></span><div class="chips"><span>S3 + Athena</span><span>DynamoDB</span></div></div>
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">Edge and containers</span><span class="gf-sheet-meta">2</span></span><div class="chips"><span>Cloudflare</span><span>Kubernetes</span></div></div>
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">AI models</span><span class="gf-sheet-meta">1</span></span><div class="chips"><span>Llama 3.3 on Groq</span></div></div>
+          </div>
+        </section>
+        <section class="kit-col gf" data-art="skills" data-seed="7" aria-labelledby="kit-skills">
+          <h3 class="gf-title" id="kit-skills">Skills</h3>
+          <p class="gf-meta">8 skills · 3 languages</p>
+          <div class="gf-files" role="list">
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">With customers</span><span class="gf-sheet-meta">3</span></span><div class="chips"><span>Customer discovery</span><span>Solution design</span><span>Executive reporting</span></div></div>
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">Building</span><span class="gf-sheet-meta">3</span></span><div class="chips"><span>Data integration</span><span>AI assistants and agents</span><span>Next.js + TypeScript</span></div></div>
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">Shipping</span><span class="gf-sheet-meta">2</span></span><div class="chips"><span>Python test automation</span><span>Go/No-Go releases</span></div></div>
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">Languages</span><span class="gf-sheet-meta">3</span></span><div class="chips"><span>English</span><span>Mandarin</span><span>Japanese</span></div></div>
+          </div>
+        </section>
+        <section class="kit-col gf learn" data-art="learning" data-seed="11" aria-labelledby="kit-learning">
+          <h3 class="gf-title" id="kit-learning">Learning it all</h3>
+          <p class="gf-meta">4 in progress · 2 certs next</p>
+          <div class="gf-files" role="list">
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">Azure</span><span class="gf-sheet-meta">2</span></span><div class="chips"><span>Azure Functions</span><span>Azure OpenAI</span></div></div>
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">Data and analytics</span><span class="gf-sheet-meta">2</span></span><div class="chips"><span>Microsoft Fabric</span><span>Power BI</span></div></div>
+            <div class="gf-sheet" role="listitem"><span class="gf-sheet-head"><span class="gf-sheet-name">Next certifications</span><span class="gf-sheet-meta">2</span></span><div class="chips"><span>Azure Fundamentals</span><span>Power BI Data Analyst</span></div></div>
+          </div>
+        </section>
       </div>
     </div>
   </div>
@@ -280,40 +309,40 @@
     <div class="sec-head">
       <p class="eyebrow">How I work</p>
       <h2>Six habits, each with proof.</h2>
-      <p class="lede">One example per habit, each from a different role. Open each one to see the work.</p>
+      <p class="lede">One example per habit, each from a different role. Drag the line or use the arrows to see the work.</p>
     </div>
     <div class="traits">
-      <article class="trait tile" id="habit-communication">
+      <article class="trait tile" id="habit-communication" data-photo="images/habits/communication.jpg">
         <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5.5A2.5 2.5 0 015.5 3h9A2.5 2.5 0 0117 5.5v6a2.5 2.5 0 01-2.5 2.5H9l-4 3v-3h0A2 2 0 013 12V5.5z"/></svg></div><h3>Communication</h3></div>
         <p class="src">Product Manager · ECARX</p>
         <p>Wrote technical and executive reports for Chinese and European stakeholders, so both sides decided from the same view.</p>
         <a class="link ext" href="https://www.linkedin.com/in/norajin-it" target="_blank" rel="noopener">See the experience</a>
       </article>
-      <article class="trait tile" id="habit-curiosity">
+      <article class="trait tile" id="habit-curiosity" data-photo="images/habits/curiosity.jpg">
         <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="8.5" r="5"/><path d="M12.5 12.5L17 17"/></svg></div><h3>Curiosity</h3></div>
         <p class="src">Product and Advisory Lead · HelloRide</p>
         <p>Started with user research and competitor analysis before recommending how to enter the Australian market. It won the NexStar Excellence Award.</p>
         <a class="link ext" href="https://versionportfolio.norajinreferralportfolio.site/" target="_blank" rel="noopener">See the project</a>
       </article>
-      <article class="trait tile" id="habit-creativity">
+      <article class="trait tile" id="habit-creativity" data-photo="images/habits/creativity.jpg">
         <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2.5l2 4.5 4.8.5-3.6 3.2 1 4.8L10 13l-4.2 2.5 1-4.8L3.2 7.5 8 7z"/></svg></div><h3>Creativity</h3></div>
         <p class="src">Backend Developer · GlowCheck</p>
         <p>Turned live weather data into simple sun-safety advice young people actually read, built as a serverless app with its own UV analytics.</p>
         <a class="link ext" href="https://versionportfolio.norajinreferralportfolio.site/" target="_blank" rel="noopener">See the project</a>
       </article>
-      <article class="trait tile" id="habit-relationship">
+      <article class="trait tile" id="habit-relationship" data-photo="images/habits/relationship.jpg">
         <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 10l3.5-3.5 3 1.5 2-1.5 3 1 3.5 2.5M6 6.5L4 13l3 2.5 3-2 3 2 2.5-3"/></svg></div><h3>Relationship building</h3></div>
         <p class="src">Software Testing Engineer · iSoftStone</p>
         <p>Worked on site with Volvo and Polestar R&amp;D in Gothenburg, joining their defect reviews to find and fix integration issues together.</p>
         <a class="link ext" href="https://versionportfolio.norajinreferralportfolio.site/" target="_blank" rel="noopener">See the experience</a>
       </article>
-      <article class="trait tile" id="habit-storytelling">
+      <article class="trait tile" id="habit-storytelling" data-photo="images/habits/storytelling.jpg">
         <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5h5a2 2 0 012 2V16a2 2 0 00-2-2H3zM17 4.5h-5a2 2 0 00-2 2V16a2 2 0 012-2h5z"/></svg></div><h3>Storytelling</h3></div>
         <p class="src">Delivery Lead · PathwayIQ</p>
         <p>Made an AI-generated promo video for Gen Z job seekers that shows what their career path could look like.</p>
         <a class="link ext" href="https://drive.google.com/file/d/1dThERfuwrqktVjlLoYlvMIriqnuhFM-b/view?usp=sharing" target="_blank" rel="noopener">Watch the video</a>
       </article>
-      <article class="trait tile" id="habit-problem-solving">
+      <article class="trait tile" id="habit-problem-solving" data-photo="images/habits/problem-solving.jpg">
         <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.5 2.5"/></svg></div><h3>Problem solving</h3></div>
         <p class="src">Business Analyst · Symphony3</p>
         <p>The crawler quietly missed pages on three council sites. I traced why: redirect loops, duplicate pages and locked pages. Then I designed a fallback where a browser reads what the crawler can't, and every missed page is listed instead of lost.</p>
@@ -545,7 +574,12 @@
 <script src="js/cover.js"></script>
 <script src="js/page.js"></script>
 <script src="js/journey.js"></script>
+<script src="js/folders.js"></script>
+<script src="js/polaroids.js"></script>
+<script src="js/texteffect.js"></script>
+<script src="js/morph.js"></script>
 <script src="js/crowd.js"></script>
+<script src="js/pulse.js"></script>
 <script src="js/contact.js"></script>
 </body>
 </html>

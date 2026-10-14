@@ -12,7 +12,7 @@
     rv.forEach(function(el){el.classList.add('rv');io.observe(el);});
 
     // count up the headline numbers, ending on the original text
-    var nums=[].slice.call(document.querySelectorAll('.hero-stats .big, .kpi .big, .disc-stat .big'));
+    var nums=[].slice.call(document.querySelectorAll('.kpi .big, .disc-stat .big'));
     var cio=new IntersectionObserver(function(es){es.forEach(function(e){
       if(!e.isIntersecting)return;cio.unobserve(e.target);
       var el=e.target,txt=el.textContent,m=txt.match(/^([^\d]*)([\d.]+)(.*)$/);if(!m)return;

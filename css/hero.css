@@ -1,12 +1,25 @@
 /* hero */
-.hero{background:linear-gradient(180deg,var(--hero-tint),var(--bg) 70%);padding-block:64px 72px;text-align:center}
-.hero .eyebrow{color:var(--fg);font-weight:600;letter-spacing:.02em;text-transform:none;font-size:1.05rem}
+.hero{background:linear-gradient(180deg,var(--hero-tint),var(--bg) 70%);padding-block:64px 0;text-align:center;overflow-x:clip}
+.hero .eyebrow{color:var(--fg);font-family:var(--font-display);font-weight:600;letter-spacing:-.01em;text-transform:none;font-size:clamp(1.5rem,1.1rem + 1.4vw,2.2rem);line-height:1.15}
 .hero h1{font-size:clamp(3rem,1.4rem + 6.4vw,6.75rem);font-weight:600;line-height:1;letter-spacing:-.035em;margin:10px auto 0}
 .hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--petal-a),var(--petal-b) 60%,var(--glow));-webkit-background-clip:text;background-clip:text;color:transparent}
 .motto{margin:22px auto 0;font-family:var(--font-display);font-size:clamp(1.25rem,1rem + 1.1vw,1.75rem);font-weight:500;color:var(--muted);letter-spacing:-.01em}
 .motto small{display:block;margin-bottom:6px;font-family:var(--font-body);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.screen{position:relative;margin-top:48px;border-radius:var(--r-xl);overflow:hidden;min-height:440px;display:grid;gap:14px;align-content:end;padding:28px;text-align:left;
-  background:radial-gradient(ellipse 60% 70% at 50% 42%,#2a86ff 0%,#0b4fc4 30%,#06286d 62%,#040f2a 100%);box-shadow:0 30px 60px -30px rgba(4,30,80,.55)}
+/* toolkit band: full-bleed like the other sections, its content kept to the page column (the padding equals the bleed).
+   Background: the 21st.dev "Light Mint Cream" gradient with its two grain passes; fixed colours in both themes. */
+.screen{--feather:150px;--sink:170px;position:relative;margin-top:48px;margin-inline:calc(50% - 50vw);display:grid;gap:28px;align-content:end;
+  padding:48px calc(50vw - 50%) calc(var(--sink) + 16px);text-align:left}
+/* the band's backgrounds sit on layers under the crowd (.crowd is z 1) and are feathered, so there are no hard seams:
+   the top fades in from the page over --feather (the band starts behind the busts), and the bottom --sink melts into the
+   navy the journey band starts with (#071d4a) */
+.screen::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-color:#4FD1C5;
+  background-image:linear-gradient(180deg,transparent calc(100% - var(--sink)),#071d4a 100%),url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.050'/></svg>"),linear-gradient(155deg,#4FD1C5 0%,#E8FFF8 34%,#FFF3DC 60%,#E8FFF8 84%,#4FD1C5 100%);
+  background-size:auto,120px 120px,auto;background-blend-mode:normal,overlay,normal;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 var(--feather));mask-image:linear-gradient(180deg,transparent,#000 var(--feather))}
+.screen::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");background-size:120px 120px;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 var(--feather));mask-image:linear-gradient(180deg,transparent,#000 var(--feather))}
+.screen .bloom{display:none}
 .bloom{position:absolute;left:50%;top:42%;width:min(400px,58%);aspect-ratio:1;transform:translate(-50%,calc(-50% + var(--py,0px))) scale(var(--ps,1))}
 .bloom-stage{position:absolute;inset:0;animation:spin 60s linear infinite}
 .petal{position:absolute;left:50%;top:50%;width:46%;height:46%;transform-origin:0 0;border-radius:4% 70% 6% 70%;background:linear-gradient(135deg,#bfe6ff,#3aa6ff 45%,#0a5fd6);opacity:.9;box-shadow:inset 0 0 40px rgba(255,255,255,.25)}
@@ -19,13 +32,19 @@
 .bloom-glow{position:absolute;inset:4%;border-radius:50%;background:radial-gradient(circle,rgba(120,210,255,.55),transparent 65%);filter:blur(30px)}
 .bloom-core{position:absolute;left:50%;top:50%;width:16%;height:16%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fff,rgba(191,230,255,.7) 60%,transparent 72%)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.screen .bloom{opacity:.6}
+/* persona backdrop: animated pulse bars (js/pulse.js) fade in over the panel while someone's question is open */
+.pulse-bg{position:absolute;inset:0;z-index:0;width:100%;height:100%;opacity:0;transition:opacity .9s cubic-bezier(.4,0,.2,1);pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 var(--feather));mask-image:linear-gradient(180deg,transparent,#000 var(--feather))}
+.screen.persona-on .pulse-bg{opacity:1}
 /* crowd stage: busts stand behind the top edge of the toolkit panel; balloon people rise above them */
-.crowd{position:relative;height:clamp(300px,44vh,440px);margin-top:18px}
+/* full-bleed like the band below, so the crowd walks in at the left edge of the screen and out at the right */
+.crowd{position:relative;z-index:1;height:clamp(300px,44vh,440px);margin-top:18px;margin-inline:calc(50% - 50vw)}
 .crowd-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  /* fades out at the sides and, at the foot, into the band behind the busts */
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent),linear-gradient(180deg,#000 80%,transparent);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent),linear-gradient(180deg,#000 80%,transparent);mask-composite:intersect}
 .crowd.hot .crowd-canvas{cursor:pointer}
-.crowd + .screen{margin-top:0}
+.crowd + .screen{margin-top:calc(var(--feather) * -.8);padding-top:calc(16px + var(--feather) * .8)}
 .crowd-hint{position:absolute;z-index:2;left:50%;top:6px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
   font-size:.82rem;font-weight:600;color:var(--muted);background:color-mix(in srgb,var(--bg) 80%,transparent);border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 10px}
 .crowd-hint .hb{width:12px;height:14px;border-radius:50% 50% 46% 46%;background:radial-gradient(circle at 35% 30%,#fff 0 18%,#ef2b2b 22%);position:relative}
@@ -41,38 +60,83 @@
 .ask-num{font-family:var(--font-mono);font-size:.74rem;color:var(--muted)}
 .ask-card h3{font-size:1.12rem;padding-right:24px}
 /* persona view: takes over the toolkit panel while someone's question is open */
-.screen.persona-on .kit,.screen.persona-on .hero-stats{display:none}
+.screen.persona-on .kit{display:none}
 .persona{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px;align-items:center;color:#fff;
-  padding:24px;border-radius:18px;background:rgba(4,20,60,.42);border:1px solid rgba(255,255,255,.18);border-top:4px solid var(--ac,#4cc2ff);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  padding:24px;border-radius:18px;background:rgba(8,20,54,.18);border:1px solid rgba(255,255,255,.18);border-top:4px solid var(--ac,#4cc2ff);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
 .persona.show{animation:vp-in .45s cubic-bezier(.2,.7,.2,1)}
-.pv-art{display:flex;align-items:flex-end;justify-content:center;height:min(440px,60vh);border-radius:14px;background:radial-gradient(ellipse 70% 60% at 50% 40%,color-mix(in srgb,var(--ac,#4cc2ff) 45%,transparent),transparent 70%)}
-.pv-img{max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35))}
-.pv-img.cat{max-height:82%}
-.pv-body{display:grid;gap:8px;align-content:center}
-.pv-num{font-family:var(--font-mono);font-size:.78rem;color:var(--ac,#9fd8ff);letter-spacing:.06em}
-.pv-label{margin-top:6px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#9fd8ff}
-.pv-q{font-size:clamp(1.3rem,1rem + 1.2vw,1.9rem);line-height:1.2}
-.pv-who,.pv-how{color:rgba(255,255,255,.8);font-size:.97rem}
+.pv-art{position:relative;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:14px;height:min(460px,62vh);padding-bottom:6px;border-radius:14px;
+  background:radial-gradient(ellipse 70% 58% at 50% 40%,color-mix(in srgb,var(--ac,#4cc2ff) 45%,transparent),transparent 70%)}
+/* the picture and the morph canvas share one box: contain, bottom-centred (the cat at 78% height, matching fit in crowd.js) */
+.pv-pic{position:relative;flex:1 1 auto;align-self:stretch;min-height:0}
+.pv-img,.pv-morph{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35))}
+.pv-img{max-width:none;object-fit:contain;object-position:50% 100%}
+.pv-img.cat{top:22%;height:78%}
+.pv-morph{opacity:0;pointer-events:none}
+.pv-pic.morphing .pv-img{visibility:hidden}
+.pv-pic.morphing .pv-morph{opacity:1}
+/* browsing ‹ ›: the text (and the picture, when there is no morph) settles in; the panel itself stays put */
+.pv-body.swap,.pv-pic.swap{animation:vp-in .45s cubic-bezier(.2,.7,.2,1)}
+.pv-tag{display:inline-flex;align-items:center;gap:8px;max-width:100%;padding:6px 14px 6px 10px;border-radius:999px;font-size:.8rem;font-weight:600;color:#fff;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
+.pv-dot{flex:none;width:12px;height:12px;background:var(--ac,#4cc2ff);border-radius:50%}
+.pv-dot.square{border-radius:3px}
+.pv-dot.star{width:14px;height:14px;border-radius:0;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.pv-body{display:grid;gap:12px;align-content:center;min-width:0}
+.pv-num{font-family:var(--font-mono);font-size:.78rem;color:color-mix(in srgb,var(--ac,#9fd8ff) 60%,#fff);letter-spacing:.06em}
+.pv-name{text-shadow:0 2px 14px rgba(8,20,54,.7);font-size:clamp(1.35rem,1.05rem + 1.1vw,1.85rem);line-height:1.15;color:#fff}
+.pv-who{text-shadow:0 1px 10px rgba(8,20,54,.8);color:rgba(255,255,255,.8);font-size:.97rem;margin-top:-4px}
+.pv-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--ac,#9fd8ff) 55%,#fff)}
+.pv-ask{position:relative;display:grid;gap:6px;padding:14px 18px;border-radius:16px 16px 16px 4px;background:color-mix(in srgb,var(--ac,#4cc2ff) 18%,rgba(8,20,54,.62));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid color-mix(in srgb,var(--ac,#4cc2ff) 45%,transparent)}
+.pv-q{font-size:clamp(1.05rem,.95rem + .5vw,1.3rem);font-weight:600;line-height:1.35;color:#fff}
+.pv-q::before{content:"“"}.pv-q::after{content:"”"}
+.pv-solve{display:grid;gap:8px;padding:14px 18px 16px;border-radius:16px;background:rgba(8,20,54,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.14)}
 .pv-proj{font-weight:700;font-size:1.02rem;color:#fff}
-.persona .pv-link{color:#9fd8ff;margin-top:4px}
+.pv-how{list-style:none;margin:0;padding:0;display:grid;gap:7px;counter-reset:step}
+.pv-how li{position:relative;padding-left:32px;color:rgba(255,255,255,.82);font-size:.93rem;line-height:1.5;counter-increment:step}
+.pv-how li::before{content:counter(step);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font:700 .72rem var(--font-mono);color:#fff;background:color-mix(in srgb,var(--ac,#4cc2ff) 40%,transparent);border:1px solid var(--ac,#4cc2ff)}
+.persona .pv-link{color:#9fd8ff;justify-self:start;margin-top:2px}
 .pv-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16)}
 .pv-back{font:600 .88rem var(--font-body);color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 14px;cursor:pointer}
 .pv-back:hover{background:rgba(255,255,255,.18)}
 .pv-nav{display:flex;gap:8px}
 .pv-nav button{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);cursor:pointer}
 .pv-nav button:hover{background:rgba(255,255,255,.2)}
-.ask-go{font-size:.88rem}
 .ask-x{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--fg);display:grid;place-items:center;cursor:pointer}
 .ask-x:hover{border-color:var(--accent);background:var(--accent-soft)}
 /* toolkit: what I build on, what I do, what I'm learning (dashed = in progress) */
-.kit{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:150px}
+.kit{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .kit-col{display:grid;gap:12px;align-content:start;padding:18px 20px;border-radius:14px;color:#fff;background:rgba(4,20,60,.35);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .kit-col h3{font-family:var(--font-body);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#9fd8ff}
 .kit-col .chips{display:flex;flex-wrap:wrap;gap:6px}
 .kit-col .chips span{font-size:.82rem;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16)}
 .kit-col.learn .chips span{border:1px dashed rgba(159,216,255,.7);background:rgba(76,194,255,.12)}
 .kit-col p{font-size:.8rem;color:rgba(255,255,255,.72)}
-.hero-stats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.hero-stats div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:14px;padding:18px 20px;display:grid;gap:6px;min-width:0;color:#fff}
-.hero-stats .big{font-size:clamp(2rem,1.5rem + 1.6vw,2.8rem);background:none;color:#fff}
-.hero-stats span{font-size:.88rem;color:rgba(255,255,255,.82)}
+/* text effect (js/texteffect.js): segments wait hidden, then animate in with a stagger once the hero is uncovered */
+.te-seg{display:inline-block;white-space:pre}
+.te-word{display:inline-block;white-space:nowrap}
+.te:not(.te-play) .te-seg{opacity:0}
+.te-blur:not(.te-play) .te-seg{filter:blur(12px)}
+.te-play .te-seg{animation:te-fade .6s cubic-bezier(.2,.65,.3,1) both;animation-delay:calc(var(--te-d,0s) + var(--i,0) * var(--te-s,.05s))}
+.te-blur.te-play .te-seg{animation-name:te-blur}
+.te-slide.te-play .te-seg{animation-name:te-slide}
+.te-scale.te-play .te-seg{animation-name:te-scale}
+/* cut: every segment is a clipping box (padded so descenders and quote marks aren't clipped) and its text rises into it */
+.te-cut .te-seg{overflow:hidden;vertical-align:top;padding-block:.08em .18em;margin-block:-.08em -.18em}
+.te-cut:not(.te-play) .te-seg{opacity:1}
+.te-cut.te-play .te-seg{animation:none}
+.te-in{display:inline-block}
+.te-cut:not(.te-play) .te-in{transform:translateY(115%)}
+.te-cut.te-play .te-in{animation:te-cut .8s cubic-bezier(.22,1.18,.36,1) both;animation-delay:calc(var(--te-d,0s) + var(--i,0) * var(--te-s,.12s))}
+@keyframes te-cut{from{transform:translateY(115%)}to{transform:none}}
+@keyframes te-fade{from{opacity:0}to{opacity:1}}
+@keyframes te-blur{from{opacity:0;filter:blur(12px)}to{opacity:1;filter:blur(0)}}
+@keyframes te-slide{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes te-scale{from{opacity:0;transform:scale(0)}to{opacity:1;transform:none}}
+/* gradient words: each letter paints its slice of the word's gradient, so the gradient stays continuous */
+.te-grad{background:none!important}
+.te-grad .te-seg{background-image:linear-gradient(100deg,var(--petal-a),var(--petal-b) 60%,var(--glow));background-size:var(--te-w,100%) 100%;background-position:var(--te-x,0) 0;
+  background-repeat:no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent;
+  /* the h1 has line-height 1: grow each letter's paint box past the ascenders and descenders (the g) without moving the layout */
+  padding-block:.12em .2em;margin-block:-.12em -.2em;background-origin:border-box}
