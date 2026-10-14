@@ -1,0 +1,64 @@
+@media (max-width:1000px){
+  .nav-links{order:3;width:100%;margin:0 -12px}
+  .nav .wrap{flex-wrap:wrap;gap:4px 18px;padding-top:8px}
+  .star,.road{grid-template-columns:1fr 1fr}
+  .kit{grid-template-columns:1fr;margin-top:110px}
+  .persona{grid-template-columns:1fr;margin-top:110px}
+  .pv-art{height:300px}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .traits,.after,.data-grid{grid-template-columns:1fr 1fr}
+  .data-grid{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .discovery{grid-template-columns:auto minmax(0,1fr)}
+  .disc-stat{grid-column:1/-1;text-align:left}
+  .foot-cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  section.block,.cta{padding-block:60px}
+  .banner{padding-block:64px}
+  .story-body{padding-block:48px 60px}
+  .hero{padding-block:40px 48px}
+  .screen{min-height:0;padding:16px;padding-top:min(56vw,230px);border-radius:var(--r-lg)}
+  .bloom{top:min(28vw,115px);width:min(52vw,210px)}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .kit{margin-top:0}
+  .persona{margin-top:0;padding:18px}
+  .screen.persona-on{padding-top:16px}
+  .pv-art{height:260px}
+  .hero-stats div{padding:14px 16px}
+  .star,.road,.traits,.after{grid-template-columns:1fr}
+  .journey{--jh:clamp(440px,68vh,560px);--j0:250px;--js:200px;--jw:228px}
+  .j-track{gap:32px}
+  .j-media{width:220px}
+  .j-title h2{font-size:1.9rem}
+  .j-name{font-size:1.15rem}
+  .j-desc{font-size:.84rem}
+  .j-item{padding-left:20px}
+  .ver-panel{grid-template-columns:1fr}
+  .vp-media{min-height:0;aspect-ratio:16/10}
+  .vp-body{padding:22px 20px 80px}
+  .vp-body h3{font-size:1.3rem}
+  .ver-ctrl{right:20px;bottom:20px}
+  .c-bloom{width:min(74vw,420px,44vh);--hr:34%}
+  .cover-live:not(.c-side) .c-bloom{top:31%}
+  .cover-live:not(.c-side) .c-hab{margin-bottom:56px}
+  .c-hab b{font-size:1.6rem}
+  .c-hab .txt{font-size:.92rem;line-height:1.5}
+  .h-card{padding:7px 10px}
+  .h-card svg,.h-card small{display:none}
+  .h-card b{font-size:.78rem}
+  .c-hab .wm{font-size:7rem}
+  .bar-row{grid-template-columns:110px minmax(0,1fr) 32px;gap:8px}
+  .rpage{padding:18px}
+  .discovery{padding:20px}
+  .cmp-head,.cmp-row{grid-template-columns:1fr 1fr}
+  .cmp-head > div:first-child{display:none}
+  .cmp-row .cap{grid-column:1/-1;border-bottom:0;padding-bottom:4px}
+  .cmp-head > div,.cmp-row > div{padding-inline:16px}
+  .faq summary{grid-template-columns:30px minmax(0,1fr) 20px;gap:8px}
+  .faq summary{padding-inline:8px}
+  .faq-body{padding:4px 8px 22px 46px}
+  .nav-right .navlink{display:none}
+  .ms-logo{margin-right:10px}
+}
+@media (max-width:360px){.ms-word{display:none}}

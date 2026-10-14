@@ -4,21 +4,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-An interview portfolio for a Microsoft Solution Engineer interview ("Interview2 portfolio + Azure and Power BI", per README). There is no build system, package manager, linter, or test suite. The whole deliverable is one self-contained static page: `Nora Jin · Solution Engineer.html`.
+An interview portfolio for a Microsoft Solution Engineer interview ("Interview2 portfolio + Azure and Power BI", per README). There is no build system, package manager, linter, or test suite. The deliverable is one static page, `index.html`, with its styles in `css/`, its scripts in `js/` and its pictures in `images/`.
 
-To preview it, open the file in a browser (e.g. `start "" "Nora Jin · Solution Engineer.html"` from PowerShell). The filename contains spaces and a `·` (U+00B7), so always quote it.
+To preview it, open `index.html` in a browser (`start index.html` from PowerShell). Everything uses classic `<script src>` tags, not ES modules, so it also works from `file://`. Browser automation tools can't open `file://`, so serve the folder over a local HTTP server for those.
 
-## Structure of the HTML file
+## File layout
 
-- **Exported artifact wrapper.** The file starts with a generated document skeleton (`<!doctype html>…<body>` with a base `<style>` and safe-area padding), and the `<title>`, `claude:viewport-fit-sides` meta and font links come *after* `<body>`. This is how it was exported. Keep the structure as is and don't "fix" it.
-- **Styling** is one inline `<style>` block driven by CSS custom properties on `:root`. The layout is modelled on microsoft.com/windows: a white header with the four-square Microsoft logo, a "Microsoft" wordmark, a divider and "Nora Jin"; a centred hero over a dark-blue "screen" with the spinning bloom; alternating white and `--bg-2` grey bands of flat rounded `.tile` cards; a full-bleed dark `.banner` opening the PathwayIQ section; an AWS → Azure comparison grid; an FAQ accordion; a CTA band; and a multi-column link footer. Fonts are Segoe UI Variable / Cascadia Code, with Figtree / IBM Plex Mono fallbacks from Google Fonts. The hero screen and the banner use fixed dark colours on purpose, so they look the same in both themes. The footer says it's a personal portfolio and not an official Microsoft page; keep that line. Theming is defined three times and the three must stay in sync:
+- `index.html`: the markup, with the stylesheets linked in `<head>` and the scripts at the end of `<body>`.
+- `css/`: loaded in this order, which is the cascade order. Later files override earlier ones, so keep the order. `base.css` (export-wrapper base, theme tokens, type, buttons, `.tile`, section bands) → `header.css` → `cover.css` → `hero.css` (hero, crowd, persona, toolkit) → `journey.css` (journey band and release dialog) → `sections.css` (habits through footer) → `responsive.css` (the ≤1000 / ≤680 / ≤360px media queries for every section) → `motion.css` (scroll reveal, touch/spotlight, `interpolate-size`, reduced motion).
+- `js/`: `core.js` defines `window.Site` (`root`, `motion`, `clamp`, `ease`, `easeInOut`, `lerp`). Every other file is an IIFE that takes `Site` as `S`, so `core.js` must load first. Then `cover.js`, `page.js` (reveal, count-up, header progress, active link, spotlight), `journey.js` (journey scrub and release dialog), `crowd.js` (crowd canvas and persona panel) and `contact.js` (FAQ buttons, copy email). Feature files don't share state except through the DOM; for example, the persona link opens a release by clicking `.j-item`.
+
+## How the page works
+
+- **Styling** is driven by CSS custom properties on `:root`. The layout is modelled on microsoft.com/windows: a white header with the four-square Microsoft logo, a "Microsoft" wordmark, a divider and "Nora Jin"; a centred hero over a dark-blue "screen" with the spinning bloom; alternating white and `--bg-2` grey bands of flat rounded `.tile` cards; a full-bleed dark `.banner` opening the PathwayIQ section; an AWS → Azure comparison grid; an FAQ accordion; a CTA band; and a multi-column link footer. Fonts are Segoe UI Variable / Cascadia Code, with Figtree / IBM Plex Mono fallbacks from Google Fonts. The hero screen and the banner use fixed dark colours on purpose, so they look the same in both themes. The footer says it's a personal portfolio and not an official Microsoft page; keep that line. Theming is defined three times in `css/base.css`, and the three must stay in sync:
   1. light tokens on `:root`
   2. dark tokens under `@media (prefers-color-scheme: dark){:root:not([data-theme="light"])…}`
   3. the same dark tokens again under `:root[data-theme="dark"]`
 
   If you add or change a color, use a token and update all three blocks.
 - **Content sections** (anchored by id): `#top` hero → `#path` (release/career layers) → `#habits` (six habits with proof) → `#story` (PathwayIQ case study) → `#stack` (AWS-built stack mapped to Azure services) → `#roadmap` ("What ships next") → `#questions` (interview brief as a `<details class="faq">` accordion) → `#contact` (CTA band) → footer.
-- **JavaScript** is one small inline IIFE at the end of the file. It handles:
+- **JavaScript** (split across `js/` as above) handles:
   - Cover (`#cover`, before the hero): a pinned intro, a vanilla port of a scroll-scrub video hero.
     - It deliberately does not lock the body or capture wheel/touch events. With `.cover-live`, the section is 240vh taller than the viewport, and `.c-pin` sticks under the nav (`--navh` on `<html>`).
     - Eased scroll progress (`ccur` → `--cp`) drives the bloom's rotation, and `--bs` drives its scale. The title blurs out over 0–14%. The six habits play over 20–86%, about 11% each, and `.c-final` comes in over 87–95%.
@@ -64,5 +69,6 @@ To preview it, open the file in a browser (e.g. `start "" "Nora Jin · Solution 
 
 ## Constraints
 
-- Keep all markup, CSS and JS in the single HTML file. The only other files are images under `images/` (and the optional `media/cover.mp4`), loaded by relative path. Google Fonts is the only external resource it loads; outbound `<a href>` links to projects, GitHub and LinkedIn are fine.
+- Plain static files with no build step, so it must keep working when opened straight from disk. Don't switch to ES modules, `fetch()` of local files or anything else that `file://` blocks. Google Fonts is the only external resource it loads; outbound `<a href>` links to projects, GitHub and LinkedIn are fine.
+- All asset paths (`images/…`, `media/cover.mp4`, `css/…`, `js/…`) are relative to `index.html`.
 - The layout must work at phone width with no horizontal scroll.

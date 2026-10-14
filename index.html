@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nora Jin · Solution Engineer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/cover.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/journey.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/motion.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="ms" href="#top" aria-label="Nora Jin, back to top">
+      <span class="ms-logo" aria-hidden="true">
+        <span class="ms-mark">
+          <svg class="ms-sq" width="23" height="23" viewBox="0 0 23 23"><rect width="11" height="11" fill="#f25022"/><rect x="12" width="11" height="11" fill="#7fba00"/><rect y="12" width="11" height="11" fill="#00a4ef"/><rect x="12" y="12" width="11" height="11" fill="#ffb900"/></svg>
+        </span>
+        <span class="ms-brand"><span class="ms-word">Microsoft</span><span class="ms-div"></span></span>
+      </span>
+      <svg class="ms-flower" aria-hidden="true" width="23" height="23" viewBox="0 0 24 24"><defs><linearGradient id="msf-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd8ff"/><stop offset=".5" stop-color="#3aa6ff"/><stop offset="1" stop-color="#0a5fd6"/></linearGradient></defs><g fill="url(#msf-g)" opacity=".92"><ellipse cx="17" cy="12" rx="5.3" ry="2.8" transform="rotate(0 12 12)"/><ellipse cx="17" cy="12" rx="5.3" ry="2.8" transform="rotate(60 12 12)"/><ellipse cx="17" cy="12" rx="5.3" ry="2.8" transform="rotate(120 12 12)"/><ellipse cx="17" cy="12" rx="5.3" ry="2.8" transform="rotate(180 12 12)"/><ellipse cx="17" cy="12" rx="5.3" ry="2.8" transform="rotate(240 12 12)"/><ellipse cx="17" cy="12" rx="5.3" ry="2.8" transform="rotate(300 12 12)"/></g><circle cx="12" cy="12" r="1.6" fill="#fff"/></svg>
+      <span class="ms-name">Nora Jin</span>
+    </a>
+    <div class="nav-links">
+      <a href="#path">Journey</a>
+      <a href="#habits">How I work</a>
+      <a href="#story">PathwayIQ</a>
+      <a href="#stack">AWS to Azure</a>
+      <a href="#questions">Questions</a>
+    </div>
+    <div class="nav-right">
+      <a class="navlink" href="https://www.linkedin.com/in/norajin-it" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="avatar" href="#contact" aria-label="Contact Nora">NJ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 0. Cover: scroll-scrubbed intro. To use a video instead of the bloom, save it as media/cover.mp4 next to this file. -->
+<section class="cover" id="cover" aria-label="Introduction">
+  <div class="c-pin">
+    <div class="c-bg" aria-hidden="true"></div>
+    <div class="c-bloom">
+      <div class="bloom-glow" aria-hidden="true"></div>
+      <div class="bloom-stage"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+        <a class="h-lab" style="--x:0.707;--y:0.707" href="#habit-communication" aria-label="Communication: see the proof"><div class="h-spin"><div class="h-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5.5A2.5 2.5 0 015.5 3h9A2.5 2.5 0 0117 5.5v6a2.5 2.5 0 01-2.5 2.5H9l-4 3v-3h0A2 2 0 013 12V5.5z"/></svg><b>Communication</b><small>ECARX</small></div></div></a>
+        <a class="h-lab" style="--x:-0.259;--y:0.966" href="#habit-curiosity" aria-label="Curiosity: see the proof"><div class="h-spin"><div class="h-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5"/><path d="M12.5 12.5L17 17"/></svg><b>Curiosity</b><small>HelloRide</small></div></div></a>
+        <a class="h-lab" style="--x:-0.966;--y:0.259" href="#habit-creativity" aria-label="Creativity: see the proof"><div class="h-spin"><div class="h-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 2.5l2 4.5 4.8.5-3.6 3.2 1 4.8L10 13l-4.2 2.5 1-4.8L3.2 7.5 8 7z"/></svg><b>Creativity</b><small>GlowCheck</small></div></div></a>
+        <a class="h-lab" style="--x:-0.707;--y:-0.707" href="#habit-relationship" aria-label="Relationship building: see the proof"><div class="h-spin"><div class="h-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 10l3.5-3.5 3 1.5 2-1.5 3 1 3.5 2.5M6 6.5L4 13l3 2.5 3-2 3 2 2.5-3"/></svg><b>Relationship building</b><small>iSoftStone</small></div></div></a>
+        <a class="h-lab" style="--x:0.259;--y:-0.966" href="#habit-storytelling" aria-label="Storytelling: see the proof"><div class="h-spin"><div class="h-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4.5h5a2 2 0 012 2V16a2 2 0 00-2-2H3zM17 4.5h-5a2 2 0 00-2 2V16a2 2 0 012-2h5z"/></svg><b>Storytelling</b><small>PathwayIQ</small></div></div></a>
+        <a class="h-lab" style="--x:0.966;--y:-0.259" href="#habit-problem-solving" aria-label="Problem solving: see the proof"><div class="h-spin"><div class="h-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.5 2.5"/></svg><b>Problem solving</b><small>Symphony3</small></div></div></a>
+      </div>
+      <div class="bloom-core"></div>
+    </div>
+    <video class="c-video" src="media/cover.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
+    <div class="c-shade" aria-hidden="true"></div>
+    <div class="c-stack">
+      <p class="c-title">Every customer can achieve more.</p>
+      <div class="c-hab"><span class="wm" aria-hidden="true">01</span><span class="num">Habit 01 / 06</span><b>Communication</b><span class="src">Product Manager · ECARX</span><span class="txt">Technical and executive reports, so teams in China and Europe decided from the same view.</span><a class="c-go" href="#habit-communication" tabindex="-1"><span class="pi" aria-hidden="true"></span>See the proof<span aria-hidden="true">↓</span></a><span class="tip">or click its petal</span></div>
+      <div class="c-hab"><span class="wm" aria-hidden="true">02</span><span class="num">Habit 02 / 06</span><b>Curiosity</b><span class="src">Product and Advisory Lead · HelloRide</span><span class="txt">User research and competitor analysis before the market-entry advice. It won the NexStar Excellence Award.</span><a class="c-go" href="#habit-curiosity" tabindex="-1"><span class="pi" aria-hidden="true"></span>See the proof<span aria-hidden="true">↓</span></a><span class="tip">or click its petal</span></div>
+      <div class="c-hab"><span class="wm" aria-hidden="true">03</span><span class="num">Habit 03 / 06</span><b>Creativity</b><span class="src">Backend Developer · GlowCheck</span><span class="txt">Live weather data turned into sun-safety advice young people actually read.</span><a class="c-go" href="#habit-creativity" tabindex="-1"><span class="pi" aria-hidden="true"></span>See the proof<span aria-hidden="true">↓</span></a><span class="tip">or click its petal</span></div>
+      <div class="c-hab"><span class="wm" aria-hidden="true">04</span><span class="num">Habit 04 / 06</span><b>Relationship building</b><span class="src">Software Testing Engineer · iSoftStone</span><span class="txt">On site with Volvo and Polestar R&amp;D in Gothenburg, fixing integration issues together.</span><a class="c-go" href="#habit-relationship" tabindex="-1"><span class="pi" aria-hidden="true"></span>See the proof<span aria-hidden="true">↓</span></a><span class="tip">or click its petal</span></div>
+      <div class="c-hab"><span class="wm" aria-hidden="true">05</span><span class="num">Habit 05 / 06</span><b>Storytelling</b><span class="src">Delivery Lead · PathwayIQ</span><span class="txt">An AI-generated promo video that shows Gen Z job seekers what their career path could look like.</span><a class="c-go" href="#habit-storytelling" tabindex="-1"><span class="pi" aria-hidden="true"></span>See the proof<span aria-hidden="true">↓</span></a><span class="tip">or click its petal</span></div>
+      <div class="c-hab"><span class="wm" aria-hidden="true">06</span><span class="num">Habit 06 / 06</span><b>Problem solving</b><span class="src">Business Analyst · Symphony3</span><span class="txt">Traced why a crawler missed council pages, then designed a fallback so every missed page is listed, not lost.</span><a class="c-go" href="#habit-problem-solving" tabindex="-1"><span class="pi" aria-hidden="true"></span>See the proof<span aria-hidden="true">↓</span></a><span class="tip">or click its petal</span></div>
+      <div class="c-final"><span class="who">Nora Jin · Solution Engineer</span><p>Ready to help Microsoft customers turn data, cloud and AI into results.</p></div>
+    </div>
+    <div class="c-dim" aria-hidden="true"></div>
+    <div class="c-logo" aria-hidden="true"><div class="c-lg"><span class="c-sq" style="--dx:1;--dy:1;--c:#f25022"></span><span class="c-sq" style="--dx:-1;--dy:1;--c:#7fba00"></span><span class="c-sq" style="--dx:1;--dy:-1;--c:#00a4ef"></span><span class="c-sq" style="--dx:-1;--dy:-1;--c:#ffb900"></span></div><span class="c-word">Microsoft</span></div>
+    <div class="c-hint" aria-hidden="true"><span>SCROLL</span><svg width="14" height="18" viewBox="0 0 14 18"><path d="M7 1L7 17M2 12L7 17L12 12" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <button class="c-skip" type="button">Skip intro ↓</button>
+    <div class="c-bar" aria-hidden="true"><i></i></div>
+  </div>
+</section>
+
+<!-- 1. Hero -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Nora Jin</p>
+    <h1>Solution <em>Engineer</em></h1>
+    <p class="motto"><small>My motto</small>“Learn it all, not know it all.”</p>
+    <!-- Crowd: Open Peeps (CC0) walking along the top of the panel; eight balloon people among them each carry a question. -->
+    <div class="crowd" id="crowd">
+      <p class="crowd-hint"><span class="hb" aria-hidden="true"></span>Every balloon is a question. Click one to ask me.</p>
+      <canvas class="crowd-canvas" aria-hidden="true"></canvas>
+      <div class="ask-list" aria-label="Questions people are asking"></div>
+      <div class="ask-card" id="ask-card" role="dialog" aria-modal="false" aria-labelledby="ask-q" hidden>
+        <button class="ask-x" type="button" aria-label="Close"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+        <span class="ask-badge" aria-hidden="true">?</span>
+        <p class="ask-num"></p>
+        <h3 id="ask-q"></h3>
+        <a class="link ask-go" href="#questions"></a>
+      </div>
+    </div>
+    <div class="screen">
+      <div class="bloom" aria-hidden="true">
+        <div class="bloom-glow"></div>
+        <div class="bloom-stage"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div>
+        <div class="bloom-core"></div>
+      </div>
+      <section class="persona" id="persona" aria-live="polite" aria-label="Who's asking" hidden>
+        <div class="pv-art"><img class="pv-img" src="images/crowd/balloon-1.png" alt=""></div>
+        <div class="pv-body">
+          <p class="pv-num"></p>
+          <p class="pv-label">Their question</p>
+          <h3 class="pv-q"></h3>
+          <p class="pv-label">Who's asking</p>
+          <p class="pv-who"></p>
+          <p class="pv-label">How I'd solve it</p>
+          <p class="pv-proj"></p>
+          <p class="pv-how"></p>
+          <a class="link pv-link" href="#path" hidden></a>
+          <div class="pv-bar">
+            <button class="pv-back" type="button">← Back to my toolkit</button>
+            <span class="pv-nav"><button class="pv-prev" type="button" aria-label="Previous person"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12.5 5l-5 5 5 5"/></svg></button><button class="pv-next" type="button" aria-label="Next person"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7.5 5l5 5-5 5"/></svg></button></span>
+          </div>
+        </div>
+      </section>
+      <div class="kit">
+        <div class="kit-col"><h3>Platforms I build on</h3><div class="chips"><span>AWS Lambda</span><span>API Gateway</span><span>S3 + Athena</span><span>DynamoDB</span><span>Cognito</span><span>Amplify</span><span>Cloudflare</span><span>Kubernetes</span><span>Llama 3.3 on Groq</span></div></div>
+        <div class="kit-col"><h3>Skills</h3><div class="chips"><span>Customer discovery</span><span>Solution design</span><span>Data integration</span><span>AI assistants and agents</span><span>Python test automation</span><span>Next.js + TypeScript</span><span>Executive reporting</span><span>Go/No-Go releases</span></div><p>English · Mandarin · Japanese</p></div>
+        <div class="kit-col learn"><h3>Learning it all</h3><div class="chips"><span>Azure Functions</span><span>Azure OpenAI</span><span>Microsoft Fabric</span><span>Power BI</span></div><p>Next: Azure Fundamentals, then Power BI Data Analyst.</p></div>
+      </div>
+      <div class="hero-stats">
+        <div><b class="big">~60</b><span>users tested PathwayIQ</span></div>
+        <div><b class="big">238</b><span>careers mapped from government data</span></div>
+        <div><b class="big">~30%</b><span>faster defect resolution for Polestar</span></div>
+        <div><b class="big">70</b><span>of the team's 89 commits</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 2. Version history -->
+<section class="journey" id="path">
+  <div class="j-pin">
+    <div class="j-bloom" aria-hidden="true"><div class="bloom-glow"></div><div class="bloom-stage"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="bloom-core"></div></div>
+    <div class="j-track">
+      <!-- Journey picture: save it as images/journey.jpg next to this file; the blue placeholder shows until then. -->
+      <div class="j-media"><img src="images/journey.jpg" alt="Nora Jin, portrait" style="object-position:50% 22%" loading="lazy" onerror="this.remove()"><div class="vp-ph" aria-hidden="true" style="--px:40%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l9 5-9 5-9-5 9-5zM3 12.5l9 5 9-5M3 17l9 5 9-5"/></svg><b>6 releases · 2020 → Next</b></div></div>
+      <div class="j-line">
+        <div class="j-title"><p class="eyebrow">Version history</p><h2>Each release added a layer.</h2></div>
+        <div class="j-period">
+          <span class="range">2020 → Next</span>
+          <p>Solution Engineering is where all of them meet the customer.</p>
+          <span class="j-hint"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="6" y="2.5" width="8" height="15" rx="4"/><path d="M10 6v2.5"/></svg>Scroll to travel. Select a release for the story.</span>
+        </div>
+        <div class="j-axis" aria-hidden="true"><i></i></div>
+        <button class="j-item top" type="button" style="--i:0" data-i="0" aria-haspopup="dialog"><span class="j-dot" aria-hidden="true"></span>
+          <span class="j-mask"><span class="j-tag">v1 · 2020</span></span>
+          <span class="j-mask"><span class="j-name">Economics and finance</span></span>
+          <span class="j-mask"><span class="j-logos"><span class="lg tall"><img src="images/logos/dongfeng.png" alt="Dongfeng"></span></span></span>
+          <span class="j-mask late"><span class="j-desc">How businesses decide</span></span>
+          <span class="j-mask late"><span class="j-more">Read the story</span></span>
+        </button>
+        <button class="j-item bot" type="button" style="--i:1" data-i="1" aria-haspopup="dialog"><span class="j-dot" aria-hidden="true"></span>
+          <span class="j-mask"><span class="j-tag">v2 · 2022</span></span>
+          <span class="j-mask"><span class="j-name">Software testing</span></span>
+          <span class="j-mask"><span class="j-logos"><span class="lg"><img src="images/logos/isoftstone.png" alt="iSoftStone"></span></span></span>
+          <span class="j-mask late"><span class="j-desc">Volvo infotainment, Python automation</span></span>
+          <span class="j-mask late"><span class="j-more">Read the story</span></span>
+        </button>
+        <button class="j-item top" type="button" style="--i:2" data-i="2" aria-haspopup="dialog"><span class="j-dot" aria-hidden="true"></span>
+          <span class="j-mask"><span class="j-tag">v3 · 2023</span></span>
+          <span class="j-mask"><span class="j-name">Product management</span></span>
+          <span class="j-mask"><span class="j-logos"><span class="lg"><img src="images/logos/volvo.svg" alt="Volvo"></span><span class="lg"><img src="images/logos/polestar.png" alt="Polestar"></span><span class="lg tall"><img src="images/logos/geely.png" alt="Geely"></span></span></span>
+          <span class="j-mask late"><span class="j-desc">Polestar P417, China and Sweden</span></span>
+          <span class="j-mask late"><span class="j-more">Read the story</span></span>
+        </button>
+        <button class="j-item bot" type="button" style="--i:3" data-i="3" aria-haspopup="dialog"><span class="j-dot" aria-hidden="true"></span>
+          <span class="j-mask"><span class="j-tag">v4 · 2026</span></span>
+          <span class="j-mask"><span class="j-name">Master of IT, Monash</span></span>
+          <span class="j-mask late"><span class="j-desc">PathwayIQ, a live product</span></span>
+          <span class="j-mask late"><span class="j-more">Read the story</span></span>
+        </button>
+        <button class="j-item top" type="button" style="--i:4" data-i="4" aria-haspopup="dialog"><span class="j-dot" aria-hidden="true"></span>
+          <span class="j-mask"><span class="j-tag">v4.1 · 2026</span></span>
+          <span class="j-mask"><span class="j-name">Business Analyst, GovTech</span></span>
+          <span class="j-mask"><span class="j-logos"><span class="lg"><img src="images/logos/symphony3.svg" alt="Symphony3"></span></span></span>
+          <span class="j-mask late"><span class="j-desc">AI agents for council websites</span></span>
+          <span class="j-mask late"><span class="j-more">Read the story</span></span>
+        </button>
+        <button class="j-item bot next" type="button" style="--i:5" data-i="5" aria-haspopup="dialog"><span class="j-dot" aria-hidden="true"></span>
+          <span class="j-mask"><span class="j-tag">Next</span></span>
+          <span class="j-mask"><span class="j-name">Solution Engineer</span></span>
+          <span class="j-mask late"><span class="j-desc">Customer, data and AI in one role</span></span>
+          <span class="j-mask late"><span class="j-more">Read the story</span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Release stories. To add a picture, save it as images/v1.jpg, v2.jpg, v3.jpg, v4.jpg, v4-1.jpg or next.jpg next to this file
+       (or change the img src). If the file is missing, the img removes itself and the blue placeholder shows. -->
+  <dialog class="vdlg" id="ver-dialog" aria-label="Release story">
+    <button class="vdlg-close" type="button" id="ver-close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5l10 10M15 5L5 15"/></svg></button>
+    <div class="ver-stage">
+      <article class="ver-panel tile" id="vp-1" hidden>
+        <div class="vp-media" style="--px:25%"><img src="images/v1.jpg" alt="Nora reviewing financial reports with a calculator" style="object-position:50% 40%" loading="lazy" onerror="this.remove()"><div class="vp-ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 20h18M6 20v-6M11 20V9M16 20v-9M21 4l-6 5-4-3-7 6"/></svg><b>v1 · 2020</b></div></div>
+        <div class="vp-body">
+          <p class="vp-role">2020 · Economics and finance</p>
+          <h3>How businesses decide</h3>
+          <div class="vp-logos"><span class="lg tall"><img src="images/logos/dongfeng.png" alt="Dongfeng"></span></div>
+          <p>Where it started: economics and finance, the logic of cost, risk and return behind every business decision.</p>
+          <div class="pill-row"><span class="pill">Economics</span><span class="pill">Finance</span></div>
+        </div>
+      </article>
+      <article class="ver-panel tile" id="vp-2" hidden>
+        <div class="vp-media" style="--px:45%"><img src="images/v2.jpg" alt="Nora testing an in-car infotainment screen on a test bench" style="object-position:64% 40%" loading="lazy" onerror="this.remove()"><div class="vp-ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l6 6M7.3 10.2l2 2 3.6-4"/></svg><b>v2 · 2022</b></div></div>
+        <div class="vp-body">
+          <p class="vp-role">2022 · Software Testing Engineer · iSoftStone</p>
+          <h3>Testing Volvo infotainment, on site in Gothenburg</h3>
+          <div class="vp-logos"><span class="lg"><img src="images/logos/isoftstone.png" alt="iSoftStone"></span></div>
+          <p>I worked on site with Volvo and Polestar R&amp;D in Gothenburg, joining their defect reviews to find and fix integration issues together, and automated infotainment tests in Python.</p>
+          <div class="pill-row"><span class="pill">Python automation</span><span class="pill">Volvo</span><span class="pill">Polestar</span></div>
+          <a class="link ext" href="https://www.linkedin.com/in/norajin-it" target="_blank" rel="noopener">See the experience</a>
+        </div>
+      </article>
+      <article class="ver-panel tile" id="vp-3" hidden>
+        <div class="vp-media" style="--px:65%"><img src="images/v3.jpg" alt="Nora presenting the P417 programme timeline to teams in China and Sweden" style="object-position:36% 40%" loading="lazy" onerror="this.remove()"><div class="vp-ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l9 5-9 5-9-5 9-5zM3 12.5l9 5 9-5M3 17l9 5 9-5"/></svg><b>v3 · 2023</b></div></div>
+        <div class="vp-body">
+          <p class="vp-role">2023 · Product Manager · ECARX</p>
+          <h3>Polestar P417, between China and Sweden</h3>
+          <div class="vp-logos"><span class="lg"><img src="images/logos/volvo.svg" alt="Volvo"></span><span class="lg"><img src="images/logos/polestar.png" alt="Polestar"></span><span class="lg tall"><img src="images/logos/geely.png" alt="Geely"></span></div>
+          <p>OEM teams in Sweden and engineers in China often disagreed on release readiness. I agreed Go/No-Go criteria before each review, turned feedback into change-impact assessments, and wrote technical and executive reports so both sides decided from the same view.</p>
+          <div class="pill-row"><span class="pill">Go/No-Go criteria</span><span class="pill">Executive reporting</span><span class="pill">China and Sweden</span></div>
+          <a class="link ext" href="https://www.linkedin.com/in/norajin-it" target="_blank" rel="noopener">See the experience</a>
+        </div>
+      </article>
+      <article class="ver-panel tile" id="vp-4" hidden>
+        <div class="vp-media" style="--px:30%"><img src="images/v4.jpg" alt="Nora talking through a project with a classmate at Monash" style="object-position:44% 35%" loading="lazy" onerror="this.remove()"><div class="vp-ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 9l10-5 10 5-10 5-10-5zM6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/></svg><b>v4 · 2026</b></div></div>
+        <div class="vp-body">
+          <p class="vp-role">2026 · Master of IT · Monash University</p>
+          <h3>PathwayIQ, a live product</h3>
+          <p>Full-stack developer and delivery lead in a team of five. We turned government career data into a free, no-login app for Victorian Year 10–12 students, tested it with about 60 people and launched it at the Monash Expo.</p>
+          <div class="pill-row"><span class="pill">238 careers</span><span class="pill">~60 people tested</span><span class="pill">70 of 89 commits</span></div>
+          <div class="q-links"><a class="link ext" href="https://iteration3.pathwayiq.me/" target="_blank" rel="noopener">Live product</a><a class="link" href="#story">Case study</a></div>
+        </div>
+      </article>
+      <article class="ver-panel tile" id="vp-5" hidden>
+        <div class="vp-media" style="--px:55%"><img src="images/v4-1.jpg" alt="Nora mapping an AI agent for council websites on a whiteboard" style="object-position:55% 40%" loading="lazy" onerror="this.remove()"><div class="vp-ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M11 7.3l-4.8 8.5M13 7.3l4.8 8.5M7.5 18h9"/></svg><b>v4.1 · 2026</b></div></div>
+        <div class="vp-body">
+          <p class="vp-role">2026 · Business Analyst · Symphony3 (GovTech)</p>
+          <h3>AI agents for council websites</h3>
+          <div class="vp-logos"><span class="lg"><img src="images/logos/symphony3.svg" alt="Symphony3"></span></div>
+          <p>Two prototypes. The first moves council websites onto a new platform: the crawler quietly missed pages on three sites, so I traced why (redirect loops, duplicate pages and locked pages), designed a fallback where a browser reads what the crawler can't, and a five-agent pipeline that triages pages with human review for the hardest. The second generates Confluence pages automatically through the API.</p>
+          <div class="pill-row"><span class="pill">Platform data migration</span><span class="pill">Five-agent pipeline</span><span class="pill">Confluence API</span></div>
+          <div class="q-links"><a class="link ext" href="https://agents-for-migration-of-symphony3.nuojin01.workers.dev/" target="_blank" rel="noopener">Data migration prototype</a><a class="link ext" href="https://emergencydashboard-conflunceauto.nuojin01.workers.dev/" target="_blank" rel="noopener">Confluence automation</a></div>
+        </div>
+      </article>
+      <article class="ver-panel tile" id="vp-6" hidden>
+        <div class="vp-media" style="--px:75%"><img src="images/next.jpg" alt="Nora presenting a data dashboard to a customer team around a meeting table" style="object-position:52% 30%" loading="lazy" onerror="this.remove()"><div class="vp-ph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg><b>Next</b></div></div>
+        <div class="vp-body">
+          <p class="vp-role">Next · Solution Engineer</p>
+          <h3>Customer, data and AI in one role</h3>
+          <p>I've worked on each layer: the business, the testing, the product and the code. Solution Engineering is where I use all of them with a customer, and that is the part of my work I've enjoyed most.</p>
+          <div class="q-links"><a class="link" href="#contact">Get in touch</a><a class="link" href="#questions">Read my answers</a></div>
+        </div>
+      </article>
+      <div class="ver-ctrl">
+        <button type="button" id="ver-prev" aria-label="Previous release"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12.5 5l-5 5 5 5"/></svg></button>
+        <span id="ver-count" aria-live="polite">1 / 6</span>
+        <button type="button" id="ver-next" aria-label="Next release"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7.5 5l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+  </dialog>
+</section>
+
+<!-- 3. How I work: six habits -->
+<section class="block" id="habits">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">How I work</p>
+      <h2>Six habits, each with proof.</h2>
+      <p class="lede">One example per habit, each from a different role. Open each one to see the work.</p>
+    </div>
+    <div class="traits">
+      <article class="trait tile" id="habit-communication">
+        <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5.5A2.5 2.5 0 015.5 3h9A2.5 2.5 0 0117 5.5v6a2.5 2.5 0 01-2.5 2.5H9l-4 3v-3h0A2 2 0 013 12V5.5z"/></svg></div><h3>Communication</h3></div>
+        <p class="src">Product Manager · ECARX</p>
+        <p>Wrote technical and executive reports for Chinese and European stakeholders, so both sides decided from the same view.</p>
+        <a class="link ext" href="https://www.linkedin.com/in/norajin-it" target="_blank" rel="noopener">See the experience</a>
+      </article>
+      <article class="trait tile" id="habit-curiosity">
+        <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="8.5" r="5"/><path d="M12.5 12.5L17 17"/></svg></div><h3>Curiosity</h3></div>
+        <p class="src">Product and Advisory Lead · HelloRide</p>
+        <p>Started with user research and competitor analysis before recommending how to enter the Australian market. It won the NexStar Excellence Award.</p>
+        <a class="link ext" href="https://versionportfolio.norajinreferralportfolio.site/" target="_blank" rel="noopener">See the project</a>
+      </article>
+      <article class="trait tile" id="habit-creativity">
+        <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2.5l2 4.5 4.8.5-3.6 3.2 1 4.8L10 13l-4.2 2.5 1-4.8L3.2 7.5 8 7z"/></svg></div><h3>Creativity</h3></div>
+        <p class="src">Backend Developer · GlowCheck</p>
+        <p>Turned live weather data into simple sun-safety advice young people actually read, built as a serverless app with its own UV analytics.</p>
+        <a class="link ext" href="https://versionportfolio.norajinreferralportfolio.site/" target="_blank" rel="noopener">See the project</a>
+      </article>
+      <article class="trait tile" id="habit-relationship">
+        <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 10l3.5-3.5 3 1.5 2-1.5 3 1 3.5 2.5M6 6.5L4 13l3 2.5 3-2 3 2 2.5-3"/></svg></div><h3>Relationship building</h3></div>
+        <p class="src">Software Testing Engineer · iSoftStone</p>
+        <p>Worked on site with Volvo and Polestar R&amp;D in Gothenburg, joining their defect reviews to find and fix integration issues together.</p>
+        <a class="link ext" href="https://versionportfolio.norajinreferralportfolio.site/" target="_blank" rel="noopener">See the experience</a>
+      </article>
+      <article class="trait tile" id="habit-storytelling">
+        <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5h5a2 2 0 012 2V16a2 2 0 00-2-2H3zM17 4.5h-5a2 2 0 00-2 2V16a2 2 0 012-2h5z"/></svg></div><h3>Storytelling</h3></div>
+        <p class="src">Delivery Lead · PathwayIQ</p>
+        <p>Made an AI-generated promo video for Gen Z job seekers that shows what their career path could look like.</p>
+        <a class="link ext" href="https://drive.google.com/file/d/1dThERfuwrqktVjlLoYlvMIriqnuhFM-b/view?usp=sharing" target="_blank" rel="noopener">Watch the video</a>
+      </article>
+      <article class="trait tile" id="habit-problem-solving">
+        <div class="trait-top"><div class="icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.5 2.5"/></svg></div><h3>Problem solving</h3></div>
+        <p class="src">Business Analyst · Symphony3</p>
+        <p>The crawler quietly missed pages on three council sites. I traced why: redirect loops, duplicate pages and locked pages. Then I designed a fallback where a browser reads what the crawler can't, and every missed page is listed instead of lost.</p>
+        <a class="link ext" href="https://agents-for-migration-of-symphony3.nuojin01.workers.dev/" target="_blank" rel="noopener">See the prototype</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Featured story: PathwayIQ -->
+<section id="story">
+  <div class="banner">
+    <div class="wrap">
+      <p class="eyebrow">Featured project · Apr to Jul 2026</p>
+      <h2 style="margin-top:14px">PathwayIQ: career choices backed by real data, for students who've never seen it.</h2>
+      <p class="meta">Users: Victorian Year 10–12 students · My role: Full-stack developer and delivery lead, team of 5 · Mentor: ANZ industry mentor</p>
+      <div class="links">
+        <a class="btn btn-light" href="https://iteration3.pathwayiq.me/" target="_blank" rel="noopener">Try the live product</a>
+        <a class="btn btn-outline-light" href="https://drive.google.com/file/d/1dThERfuwrqktVjlLoYlvMIriqnuhFM-b/view?usp=sharing" target="_blank" rel="noopener">Watch the video</a>
+        <a class="btn btn-outline-light" href="https://theturinglab-team.pages.dev/" target="_blank" rel="noopener">Team journey</a>
+        <a class="btn btn-outline-light" href="https://github.com/njin0009/TheTuringLab_mainProject_pathwayiq" target="_blank" rel="noopener">Code</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-body">
+    <div class="wrap">
+      <div class="discovery tile">
+        <div><span class="letter">D</span></div>
+        <div class="disc-body">
+          <h3>Discovery first</h3>
+          <p>We defined the problem ourselves, so we had to prove it was real. About 60 students, teachers and careers advisers took part through interviews, surveys and usability tests, and we went back to them in every iteration.</p>
+        </div>
+        <div class="disc-stat"><b class="big">~60</b><span>people heard before and during the build</span></div>
+      </div>
+
+      <div class="star">
+        <article class="star-step tile">
+          <span class="letter">S</span><h3>Situation</h3>
+          <p>Students choose between TAFE, apprenticeships and university. Salary, shortage and AI signals sit in separate government datasets they never see.</p>
+        </article>
+        <article class="star-step tile">
+          <span class="letter">T</span><h3>Task</h3>
+          <p>In one semester, ship a live product that turns that data into a clear choice, and stores no student data.</p>
+          <div class="pill-row"><span class="pill">5 people</span><span class="pill">3 iterations</span></div>
+        </article>
+        <article class="star-step tile">
+          <span class="letter">A</span><h3>Action</h3>
+          <p>I built the main screens, integrated the data team's career dataset, added an AI career assistant, and ran Git and releases.</p>
+          <div class="pill-row flow"><span class="pill">Quiz</span><span class="pill">Explore</span><span class="pill">Compare</span><span class="pill">Report</span></div>
+        </article>
+        <article class="star-step tile">
+          <span class="letter">R</span><h3>Result</h3>
+          <b class="big result-big">Live</b>
+          <p>Launched at the Monash Expo. 238 careers, a 6- or 12-question quiz, 0 personal data stored.</p>
+          <p class="note">I made 70 of the team's 89 commits.</p>
+        </article>
+      </div>
+
+      <!-- data panel -->
+      <div class="report tile">
+        <div class="report-bar"><span class="title">What's inside PathwayIQ · career dataset</span><span class="chip good">Real data</span></div>
+        <div class="rpage">
+          <div class="kpis">
+            <div class="kpi"><b class="big">238</b><span>careers, each with a 6-digit ANZSCO code</span></div>
+            <div class="kpi"><b class="big">39%</b><span>in national shortage (93 careers)</span></div>
+            <div class="kpi"><b class="big">11</b><span>industries</span></div>
+            <div class="kpi"><b class="big">$59.7k</b><span>median of career median salaries</span></div>
+          </div>
+          <div class="data-grid">
+            <div>
+              <p class="viz-title">Careers by industry</p>
+              <div class="bars">
+                <div class="bar-row"><div class="lbl"><b>Business</b></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">60</div></div>
+                <div class="bar-row"><div class="lbl"><b>Community services</b></div><div class="track"><div class="fill" style="width:68.3%"></div></div><div class="val">41</div></div>
+                <div class="bar-row"><div class="lbl"><b>Engineering</b></div><div class="track"><div class="fill" style="width:60%"></div></div><div class="val">36</div></div>
+                <div class="bar-row"><div class="lbl"><b>Education</b></div><div class="track"><div class="fill" style="width:50%"></div></div><div class="val">30</div></div>
+                <div class="bar-row"><div class="lbl"><b>Construction</b></div><div class="track"><div class="fill" style="width:36.7%"></div></div><div class="val">22</div></div>
+                <div class="bar-row"><div class="lbl"><b>Healthcare</b></div><div class="track"><div class="fill" style="width:33.3%"></div></div><div class="val">20</div></div>
+                <div class="bar-row"><div class="lbl"><b>5 others</b></div><div class="track"><div class="fill muted" style="width:48.3%"></div></div><div class="val">29</div></div>
+              </div>
+            </div>
+            <div class="split-col">
+              <div>
+                <p class="viz-title">Pathway</p>
+                <div class="stack" role="img" aria-label="TAFE 181, apprenticeship 57">
+                  <div style="width:76%;background:var(--petal-a)"></div><div style="width:24%;background:var(--petal-c)"></div>
+                </div>
+                <div class="legend"><span><i style="background:var(--petal-a)"></i>TAFE 181</span><span><i style="background:var(--petal-c)"></i>Apprenticeship 57</span></div>
+              </div>
+              <div>
+                <p class="viz-title">How much AI may change the role</p>
+                <div class="stack" role="img" aria-label="Low 190, medium 37, high 5, unknown 6">
+                  <div style="width:79.8%;background:var(--good)"></div><div style="width:15.5%;background:var(--amber)"></div><div style="width:2.1%;background:var(--crit)"></div><div style="width:2.5%;background:var(--line)"></div>
+                </div>
+                <div class="legend"><span><i style="background:var(--good)"></i>Low 190</span><span><i style="background:var(--amber)"></i>Some 37</span><span><i style="background:var(--crit)"></i>Big 5</span><span><i style="background:var(--line)"></i>Unknown 6</span></div>
+              </div>
+              <div class="source">
+                <b>Where the data comes from</b>
+                Jobs and Skills Australia shortage list and generative AI study, NCVER apprentice and VET outcomes, ABS ANZSCO codes. Our data team cleaned it with 8 Python scripts, matched titles to ANZSCO codes and audited quality. I integrated their output into the live product.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="after">
+        <article class="tile"><span class="chip sky">Problem I solved</span><h3>The AI assistant broke in production</h3><p>Browsers blocked direct calls to the AI service. I moved the call into a server-side function. That fixed it and kept the API key out of the browser.</p></article>
+        <article class="tile"><span class="chip amber">What I'd do differently</span><h3>Make the AI rating explainable</h3><p>Some ratings fall back to simple rules. Next time I'd join the AI exposure data on ANZSCO codes and show students how each rating is made.</p></article>
+        <article class="tile"><span class="chip good">Imagine it on Azure</span><h3>Grounded answers, live data</h3><p>Azure OpenAI grounded on the 238 career records with Azure AI Search. Fabric for the data pipeline. Power BI for careers advisers.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Works with: AWS vs Azure comparison -->
+<section class="block alt" id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Works with</p>
+      <h2>Built on AWS. Mapped to Azure.</h2>
+      <p class="lede">What I've built, and the Azure service I'd use for the same job.</p>
+    </div>
+    <div class="compare tile" role="table" aria-label="AWS services I've used and their Azure equivalents">
+      <div class="cmp-head" role="row"><div role="columnheader">Job to do</div><div role="columnheader">What I've built on</div><div class="az" role="columnheader">Azure equivalent</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>Serverless functions</b><small>PathwayIQ, GlowCheck</small></div><div class="aws" role="cell">AWS Lambda</div><div class="az" role="cell">Azure Functions</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>API front door</b><small>PathwayIQ, GlowCheck</small></div><div class="aws" role="cell">API Gateway</div><div class="az" role="cell">Azure API Management</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>Analytics on stored data</b><small>GlowCheck UV analytics</small></div><div class="aws" role="cell">S3 and Athena</div><div class="az" role="cell">OneLake and Microsoft Fabric</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>NoSQL database</b><small>Multimedia storage</small></div><div class="aws" role="cell">DynamoDB</div><div class="az" role="cell">Azure Cosmos DB</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>Identity and access</b><small>Multimedia storage</small></div><div class="aws" role="cell">Cognito and IAM</div><div class="az" role="cell">Microsoft Entra ID</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>Web hosting</b><small>GlowCheck</small></div><div class="aws" role="cell">Amplify</div><div class="az" role="cell">Azure Static Web Apps</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>Language model</b><small>PathwayIQ assistant</small></div><div class="aws" role="cell">Llama 3.3 on Groq</div><div class="az" role="cell">Azure OpenAI in Microsoft Foundry</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>Hosting and file storage</b><small>PathwayIQ</small></div><div class="aws" role="cell">Cloudflare Pages and R2</div><div class="az" role="cell">Static Web Apps and Blob Storage</div></div>
+      <div class="cmp-row" role="row"><div class="cap" role="cell"><b>Containers</b><small>Cloud scaling test</small></div><div class="aws" role="cell">Kubernetes</div><div class="az" role="cell">Azure Kubernetes Service</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Roadmap -->
+<section class="block" id="roadmap">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Roadmap</p>
+      <h2>What ships next.</h2>
+    </div>
+    <div class="road">
+      <div class="tile"><span class="chip sky">Planned</span><h3>This site on Azure</h3><p>Static Web Apps with Functions, deployed from GitHub.</p></div>
+      <div class="tile"><span class="chip sky">Planned</span><h3>Live Power BI report</h3><p>The career model above, built in Fabric and embedded here.</p></div>
+      <div class="tile"><span class="chip sky">Planned</span><h3>Ask Nora</h3><p>A grounded assistant on Azure OpenAI that answers from my case studies.</p></div>
+      <div class="tile"><span class="chip sky">Planned</span><h3>Azure certifications</h3><p>Azure Fundamentals, then Power BI Data Analyst.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Questions: FAQ accordion -->
+<section class="block alt" id="questions">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Questions</p>
+      <h2>Your interview brief, answered.</h2>
+      <p class="lede">Every question from the preparation notes, with a short answer and a link to the work behind it.</p>
+    </div>
+
+    <div class="faq-wrap">
+      <div class="faq-tools"><button type="button" id="faq-open">Expand all</button><button type="button" id="faq-close">Collapse all</button></div>
+
+      <p class="q-group">The project, end to end · PathwayIQ</p>
+      <details class="faq" open id="faq-01"><summary><span class="q-num">01</span><h3>What customer problem were you solving?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>Victorian Year 10–12 students choose between TAFE, apprenticeships and university without seeing salary, shortage or how AI may change a job. That data exists, but it is spread across government datasets they never see.</p><div class="q-links"><a class="link" href="#story">Featured project</a></div></div></details>
+      <details class="faq" id="faq-02"><summary><span class="q-num">02</span><h3>What was your role and contribution?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>Full-stack developer and delivery lead in a team of five. I built the quiz, explore, compare and report screens and the AI assistant, integrated the data team's dataset, and ran Git and releases for iterations 2 and 3. I made 70 of the team's 89 commits.</p><div class="q-links"><a class="link ext" href="https://github.com/njin0009/TheTuringLab_mainProject_pathwayiq" target="_blank" rel="noopener">Code</a><a class="link ext" href="https://theturinglab-team.pages.dev/" target="_blank" rel="noopener">Team journey</a></div></div></details>
+      <details class="faq" id="faq-03"><summary><span class="q-num">03</span><h3>What solution did you design and build?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>A free, no-login web app. A 6- or 12-question quiz builds an interest profile. Students then explore and compare 238 careers, get a personal report, and ask an AI assistant follow-up questions.</p><div class="q-links"><a class="link ext" href="https://iteration3.pathwayiq.me/" target="_blank" rel="noopener">Live product</a></div></div></details>
+      <details class="faq" id="faq-04"><summary><span class="q-num">04</span><h3>Which technologies did you use, and why?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>Next.js and TypeScript for a fast front end. Serverless functions, so a student team paid almost nothing to run it. Llama 3.3 on Groq for fast, low-cost answers. Government data cleaned in Python and joined on ANZSCO codes. On Azure I'd use Static Web Apps, Functions and Azure OpenAI.</p><div class="q-links"><a class="link" href="#stack">Azure mapping</a><a class="link ext" href="https://github.com/njin0009/TheTuringLab_mainProject_pathwayiq" target="_blank" rel="noopener">Code</a></div></div></details>
+      <details class="faq" id="faq-05"><summary><span class="q-num">05</span><h3>What key decisions and trade-offs did you make?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>Privacy over personalisation: no accounts and no stored data, so results live in the session. Honesty over completeness: where growth data was missing, we show "Unknown" instead of guessing. Speed over control: a hosted model instead of running our own.</p><div class="q-links"><a class="link" href="#story">Featured project</a></div></div></details>
+      <details class="faq" id="faq-06"><summary><span class="q-num">06</span><h3>What was the outcome?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>Launched live at the Monash Expo with 238 careers. Tested with about 60 students, teachers and careers advisers across iterations. Zero personal data stored.</p><div class="q-links"><a class="link ext" href="https://iteration3.pathwayiq.me/" target="_blank" rel="noopener">Live product</a><a class="link ext" href="https://drive.google.com/file/d/1dThERfuwrqktVjlLoYlvMIriqnuhFM-b/view?usp=sharing" target="_blank" rel="noopener">Video</a></div></div></details>
+      <details class="faq" id="faq-07"><summary><span class="q-num">07</span><h3>What did you learn, and what would you do differently?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>Test with students even earlier. Make the AI-change rating explainable by joining the exposure data on ANZSCO codes and showing the method. Ground the assistant in the career records, not just the quiz result.</p><div class="q-links"><a class="link" href="#story">Featured project</a></div></div></details>
+
+      <p class="q-group">Beyond the project</p>
+      <details class="faq" id="faq-08"><summary><span class="q-num">08</span><h3>How have you used AI, and what patterns do you know?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>I use AI where it classifies, grounds or speeds up work, and keep a person at the risky step. PathwayIQ's assistant gets the student's quiz context. At Symphony3 I designed a five-agent pipeline that triages council pages, with human review for the hardest. I also run multi-agent tests on local open models.</p><div class="q-links"><a class="link ext" href="https://agents-for-migration-of-symphony3.nuojin01.workers.dev/" target="_blank" rel="noopener">AI migration prototype</a><a class="link ext" href="https://iteration3.pathwayiq.me/" target="_blank" rel="noopener">AI assistant</a></div></div></details>
+      <details class="faq" id="faq-09"><summary><span class="q-num">09</span><h3>How do you handle different perspectives and decisions with others?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>At ECARX, OEM teams in Sweden and engineers in China often disagreed on release readiness. I agreed Go/No-Go criteria before each review and turned feedback into change-impact assessments, so everyone argued about the same facts. In PathwayIQ, five specialties meant five views; we settled them against what users told us.</p><div class="q-links"><a class="link" href="#habits">Communication</a><a class="link ext" href="https://theturinglab-team.pages.dev/" target="_blank" rel="noopener">Team journey</a></div></div></details>
+      <details class="faq" id="faq-10"><summary><span class="q-num">10</span><h3>How do you explain technical ideas to different audiences?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>I start from what each person has to decide. Students get plain labels like "In demand". Volvo and Polestar executives got one readiness view and the risk. Engineers get the mechanism and where it breaks.</p><div class="q-links"><a class="link ext" href="https://iteration3.pathwayiq.me/" target="_blank" rel="noopener">See the labels</a><a class="link" href="#habits">Communication</a></div></div></details>
+      <details class="faq" id="faq-11"><summary><span class="q-num">11</span><h3>Why Solution Engineering?</h3><svg class="chev" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 7.5l5 5 5-5"/></svg></summary>
+        <div class="faq-body"><p>I've worked on each layer: the business, the testing, the product and the code. Solution Engineering is where I use all of them with a customer, and that is the part of my work I've enjoyed most.</p><div class="q-links"><a class="link" href="#path">Version history</a></div></div></details>
+
+      <article class="q-mine tile"><span class="q-num">12</span><h3>My questions for you</h3><ul><li>What does a strong first 90 days look like for a new Solution Engineer on your team?</li><li>Which data and AI scenarios do Australian customers ask about most right now?</li><li>How do Solution Engineers work with partners on a proof of concept?</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CTA band + contact -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2 style="margin-top:14px">Looking for a Solution Engineer who builds the first version?</h2>
+    <p class="lede">Melbourne · open to relocation · available now · English, Mandarin, Japanese</p>
+    <div class="contact">
+      <button class="btn btn-primary" type="button" id="copy-email">Copy email</button>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/norajin-it" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://versionportfolio.norajinreferralportfolio.site/" target="_blank" rel="noopener">Full portfolio</a>
+    </div>
+    <p style="margin-top:14px"><span class="mono" id="email-text">nuojin@gmail.com</span> <span class="copy-out" id="copy-out" aria-live="polite"></span></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-cols">
+      <div><h4>This page</h4><ul><li><a href="#path">Version history</a></li><li><a href="#habits">How I work</a></li><li><a href="#story">PathwayIQ</a></li><li><a href="#stack">AWS to Azure</a></li><li><a href="#questions">Questions</a></li></ul></div>
+      <div><h4>PathwayIQ</h4><ul><li><a href="https://iteration3.pathwayiq.me/" target="_blank" rel="noopener">Live product</a></li><li><a href="https://github.com/njin0009/TheTuringLab_mainProject_pathwayiq" target="_blank" rel="noopener">Code</a></li><li><a href="https://theturinglab-team.pages.dev/" target="_blank" rel="noopener">Team journey</a></li><li><a href="https://drive.google.com/file/d/1dThERfuwrqktVjlLoYlvMIriqnuhFM-b/view?usp=sharing" target="_blank" rel="noopener">Promo video</a></li></ul></div>
+      <div><h4>Other work</h4><ul><li><a href="https://agents-for-migration-of-symphony3.nuojin01.workers.dev/" target="_blank" rel="noopener">Symphony3 AI migration prototype</a></li><li><a href="https://versionportfolio.norajinreferralportfolio.site/" target="_blank" rel="noopener">Full portfolio</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="https://www.linkedin.com/in/norajin-it" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="#contact">Email</a></li><li><a href="#top">Back to top</a></li></ul></div>
+    </div>
+    <div class="foot-bar">
+      <span class="loc"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M2.5 10h15M10 2.5c2.2 2.3 3.2 4.8 3.2 7.5s-1 5.2-3.2 7.5c-2.2-2.3-3.2-4.8-3.2-7.5s1-5.2 3.2-7.5z"/></svg>Melbourne, Australia</span>
+      <span>Nora Jin · 金诺 · Personal interview portfolio, not an official Microsoft page · Crowd illustrations: Open Peeps (CC0) · © 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/core.js"></script>
+<script src="js/cover.js"></script>
+<script src="js/page.js"></script>
+<script src="js/journey.js"></script>
+<script src="js/crowd.js"></script>
+<script src="js/contact.js"></script>
+</body>
+</html>

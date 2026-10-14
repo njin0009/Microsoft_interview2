@@ -1,0 +1,93 @@
+/* cover: pinned intro. Scroll scrubs the bloom (or a video at media/cover.mp4) and the words, then the page carries on.
+   Without .cover-live (no JS or reduced motion) it is a single static screen with the title and the final line. */
+.cover{position:relative;background:#03091a;color:#f2f4f8}
+.c-pin{position:relative;height:calc(100vh - var(--navh,56px));min-height:340px;overflow:hidden}
+.cover-live{height:calc(100vh - var(--navh,56px) + 440vh);margin-bottom:calc(-1 * max(100vh - var(--navh,56px), 340px))}
+.cover-live .c-pin{position:sticky;top:var(--navh,56px);pointer-events:auto}
+/* the hero sits under the cover's last screen; the section itself must not hide it or catch its clicks */
+.cover-live{background:none;pointer-events:none}
+.c-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(42,134,255,calc(.22 + var(--cp,0) * .5)),transparent 70%),linear-gradient(180deg,#061a42,#03091a)}
+.c-bloom{position:absolute;left:50%;top:50%;width:min(72vmin,560px);aspect-ratio:1;transform:translate(calc(-50% + var(--bxs,0px)),-50%) scale(var(--bs,.62)) rotate(calc(var(--cp,0) * -50deg));opacity:calc((.75 + var(--cp,0) * .25) * var(--bo,1))}
+/* six habits on the petals: the active petal brightens and reaches out, the rest dim */
+.c-bloom .petal{transition:opacity .5s,filter .5s,scale .5s}
+.c-bloom.focus .petal{opacity:.4}
+.c-bloom .petal.on{opacity:1;filter:brightness(1.3) saturate(1.15);scale:1.08}
+/* labels sit inside the spinning stage at each petal's centre, counter-rotated (spin + scroll) and
+   counter-scaled so they stay upright and the same size on screen */
+.h-lab{position:absolute;z-index:2;left:calc(50% + var(--hr,46%) * var(--x));top:calc(50% + var(--hr,46%) * var(--y));transform:translate(-50%,-50%) rotate(calc(var(--cp,0) * 50deg)) scale(calc(1 / var(--bs,1)));opacity:var(--hl,1)}
+.h-spin{animation:spin 60s linear infinite reverse}
+/* plain words on the petal: no box or border, just white text with a soft shadow for contrast */
+.h-lab{color:#fff;text-decoration:none;cursor:pointer;border-radius:10px}
+.h-card{display:grid;justify-items:center;gap:2px;padding:4px 6px;white-space:nowrap;text-shadow:0 1px 3px rgba(3,12,40,.55),0 2px 14px rgba(3,12,40,.75);transition:scale .4s}
+.h-card svg{width:18px;height:18px;margin-bottom:2px;filter:drop-shadow(0 1px 6px rgba(3,12,40,.7))}
+.h-card b{font-family:var(--font-display);font-size:1rem;font-weight:600}
+.h-card small{font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#d6ecff}
+.h-lab.on .h-card{scale:1.18}
+.h-lab:hover .h-card b{text-decoration:underline;text-underline-offset:4px}
+.c-bloom .petal{cursor:pointer}
+.c-bloom .petal:hover{filter:brightness(1.25)}
+.cover:not(.cover-live) .h-lab{display:none}
+.c-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s;transform:scale(calc(1 + var(--cp,0) * .06));pointer-events:none}
+.has-video .c-video{opacity:1}
+.has-video .c-bloom{display:none}
+.c-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,7,13,.35),rgba(5,7,13,0) 30%,rgba(5,7,13,.15) 70%,rgba(5,7,13,.55))}
+.c-stack{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:22px;padding:0 6%;text-align:center;pointer-events:none}
+.cover-live .c-stack{place-content:stretch;align-items:center}
+.cover-live .c-stack > *{grid-area:1/1}
+.c-stack > *{will-change:transform,filter,opacity}
+.c-title{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,1rem + 6vw,6rem);line-height:1;letter-spacing:-.03em;max-width:13ch;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+/* habit text sits on the dark background beside the bloom (or below it on portrait screens), no panel behind it */
+.c-hab{position:relative;isolation:isolate;display:grid;gap:8px;justify-items:start;text-align:left;max-width:min(var(--tw,420px),36ch)}
+.c-hab::before{content:"";width:36px;height:2px;border-radius:2px;background:#4cc2ff;margin-bottom:4px}
+.c-hab .wm{position:absolute;z-index:-1;left:-.06em;top:50%;transform:translateY(-56%);font-family:var(--font-display);font-weight:800;font-size:clamp(8rem,13vw,15rem);line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px rgba(159,216,255,.14);background:none;pointer-events:none}
+.c-hab .num{font-family:var(--font-mono);font-size:.78rem;color:#9fd8ff;letter-spacing:.1em}
+.c-hab b{font-family:var(--font-display);font-weight:600;font-size:clamp(1.9rem,1.1rem + 2vw,3.2rem);line-height:1.05;letter-spacing:-.025em;color:rgba(242,244,248,.96)}
+.c-hab .src{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9fd8ff!important}
+.c-hab .txt{font-size:1.02rem;line-height:1.55;color:rgba(242,244,248,.7)}
+.c-go{display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:9px 16px 9px 12px;border-radius:999px;font:600 .88rem var(--font-body);color:#fff;text-decoration:none;
+  background:rgba(76,194,255,.14);border:1px solid rgba(159,216,255,.45);pointer-events:none;transition:background .2s,border-color .2s,transform .12s}
+.c-go:hover{background:rgba(76,194,255,.28);border-color:#9fd8ff}
+.c-go:active{transform:scale(.97)}
+.c-go .pi{width:15px;height:15px;border-radius:4% 70% 6% 70%;transform:rotate(45deg);background:linear-gradient(135deg,#bfe6ff,#3aa6ff 45%,#0a5fd6);box-shadow:0 0 12px rgba(76,194,255,.65)}
+.c-hab .tip{font-size:.74rem;color:rgba(242,244,248,.42)}
+.cover-live.c-side .c-hab{justify-self:start;align-self:center;margin-left:max(24px,6vw)}
+.cover-live:not(.c-side) .c-bloom{top:38%}
+.cover-live:not(.c-side) .c-hab{justify-self:center;align-self:end;justify-items:center;text-align:center;margin-bottom:64px;max-width:34ch}
+.cover-live:not(.c-side) .c-hab .wm{left:50%;transform:translate(-50%,-56%)}
+.cover:not(.cover-live) .c-hab{display:none}
+.cover-live .c-hab,.cover-live .c-final{opacity:0}
+.c-final{display:grid;gap:14px;justify-items:center}
+.c-final .who{font-size:.85rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#9fd8ff}
+.c-final p{font-family:var(--font-display);font-weight:600;font-size:clamp(1.6rem,1rem + 2.6vw,3rem);line-height:1.15;letter-spacing:-.02em;max-width:22ch;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.c-hint{position:absolute;left:50%;bottom:clamp(20px,6vh,48px);transform:translateX(-50%);display:grid;justify-items:center;gap:8px;color:rgba(240,244,248,.75);font-size:.72rem;font-weight:600;letter-spacing:.3em;transition:opacity .4s;pointer-events:none}
+.c-hint svg{animation:c-bounce 1.6s ease-in-out infinite}
+@keyframes c-bounce{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(5px);opacity:1}}
+.cover:not(.cover-live) .c-hint{display:none}
+.c-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.12)}
+.c-bar i{display:block;height:100%;background:linear-gradient(90deg,#4cc2ff,#fff);transform-origin:0 50%;transform:scaleX(var(--cp,0))}
+.c-skip{position:absolute;z-index:2;right:clamp(12px,2.5vw,24px);bottom:clamp(14px,2vw,22px);font:600 .82rem var(--font-body);color:rgba(220,224,232,.8);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .2s,background .2s}
+.c-skip:hover{color:#fff;background:rgba(255,255,255,.16)}
+/* ending: the bloom folds away, the four Microsoft squares spin out of its centre, the wordmark slides out from
+   behind them, then the logo flies into the header logo while the cover fades away over the hero waiting beneath */
+.c-dim{position:absolute;inset:0;pointer-events:none;opacity:var(--dm,0);background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(3,9,26,.62),rgba(3,9,26,.3))}
+.c-logo{--q:clamp(44px,7vw,92px);--g:calc(var(--q) / 11);position:fixed;z-index:30;left:50%;top:50%;display:none;align-items:center;gap:calc(var(--q) * .34);
+  transform-origin:calc(var(--q) + var(--g) / 2) 50%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;will-change:transform,opacity}
+.c-lg{position:relative;flex:none;width:calc(var(--q) * 2 + var(--g));height:calc(var(--q) * 2 + var(--g))}
+.c-sq{position:absolute;width:var(--q);height:var(--q);background:var(--c);
+  transform:translate(calc(var(--dx) * (1 - var(--s,0)) * (var(--q) + var(--g)) / 2),calc(var(--dy) * (1 - var(--s,0)) * (var(--q) + var(--g)) / 2)) scale(var(--s,0)) rotate(calc((1 - var(--s,0)) * 90deg))}
+.c-sq:nth-child(1){left:0;top:0}.c-sq:nth-child(2){right:0;top:0}.c-sq:nth-child(3){left:0;bottom:0}.c-sq:nth-child(4){right:0;bottom:0}
+.c-word{font-family:"Segoe UI",var(--font-display);font-weight:600;font-size:calc(var(--q) * 1.18);line-height:1;letter-spacing:-.02em;white-space:nowrap;
+  color:color-mix(in srgb,#737373 calc(var(--lt,0) * 100%),#ffffff);opacity:var(--wo,0);filter:blur(var(--wb,0px));transform:translateX(var(--wt,0px))}
+.c-anim .c-logo{display:flex}
+.c-dim{z-index:1}
+.c-stack{z-index:2}
+.ms-sq.arrive{animation:ms-arrive .6s cubic-bezier(.2,.7,.2,1)}
+/* blue star trail behind the flying logo: each star's place on the arc is a function of scroll, so it scrubs both ways */
+.c-trail{position:fixed;inset:0;z-index:29;pointer-events:none;display:none}
+.c-anim .c-trail{display:block}
+.c-star{position:absolute;left:0;top:0;width:26px;height:26px;opacity:0;filter:drop-shadow(0 0 5px #4cc2ff) drop-shadow(0 0 14px rgba(76,194,255,.85));will-change:transform,opacity}
+.c-star b{display:block;width:100%;height:100%;background:radial-gradient(circle,#fff 0 18%,#9fd8ff 38%,#3aa6ff 62%,#0a5fd6);
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);animation:twinkle 1.2s ease-in-out infinite}
+.c-star:nth-child(3n+1) b{animation-delay:-.4s}.c-star:nth-child(3n+2) b{animation-delay:-.8s}
+@keyframes twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(.6) rotate(45deg)}}
+@keyframes ms-arrive{40%{transform:scale(1.35)}100%{transform:none}}
